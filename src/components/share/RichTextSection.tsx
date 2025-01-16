@@ -16,7 +16,7 @@ const RichTextSection = () => {
                                         <span className='z9t9gss3j0 text-sm text-muted-foreground'>·</span>
                                         <p className='z9t9gss3j0 text-sm text-muted-foreground'>Articles</p>
                                     </div>
-                                    <h1 id='article-title' className='kkx9r352g6 lcaorxnrya font-bold text-foreground'>
+                                    <h1 id='article-title' className='lcaorxnrya text-4xl font-bold text-foreground'>
                                         Short and clear engaging headline
                                     </h1>
                                     <p className='text-lg leading-7 text-muted-foreground'>
@@ -44,7 +44,7 @@ const RichTextSection = () => {
                                     <div className='absolute inset-0'>
                                         <img
                                             src='https://ui.shadcn.com/placeholder.svg'
-                                            className='y6dokfnd0t auuaj6huig size-full'
+                                            className='y6dokfnd0t size-full rounded-xl'
                                         />
                                     </div>
                                 </div>
