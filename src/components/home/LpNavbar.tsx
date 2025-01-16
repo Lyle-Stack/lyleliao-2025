@@ -84,7 +84,7 @@ const LpNavbar = () => {
                             <Menu />
                         </Button>
                     </div>
-                    <div className='u94mi7up5p lnqy1nz91d pxghgs6z3e hidden w-full gap-5'>
+                    <div className='u94mi7up5p pxghgs6z3e hidden w-full flex-row gap-5'>
                         <div className='flex flex-col gap-1 md:flex-row'>
                             <a href='#'>
                                 <Button className='w-full'>Products</Button>

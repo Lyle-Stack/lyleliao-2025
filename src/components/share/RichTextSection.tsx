@@ -50,7 +50,7 @@ const RichTextSection = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className='lnqy1nz91d flex gap-12'>
+                        <div className='flex flex-row gap-12'>
                             <div className='uakwbtjb3w flex flex-col gap-6'>
                                 <p className='b083vg25sm leading-7'>
                                     Once upon a time, in a far-off land, there was a very lazy king who spent all day
