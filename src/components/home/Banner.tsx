@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { Button } from '../ui/button';
+import { ChevronsRight, X } from 'lucide-react';
+
 const Banner = () => {
     return (
         <aside
@@ -12,42 +15,11 @@ const Banner = () => {
                         <span className='font-semibold'>New update</span> · Pro blocks are now available in shadcn/ui
                         kit for Figma!
                     </span>
-                    <svg
-                        xmlns='http://www.w3.org/2000/svg'
-                        width='24'
-                        height='24'
-                        viewBox='0 0 24 24'
-                        fill='none'
-                        stroke='currentColor'
-                        strokeWidth='2'
-                        strokeLinecap='round'
-                        strokeLinejoin='round'
-                        className='lucide lucide-chevrons-right hwl3hi1opl hidden h-4 w-4 md:block'
-                        aria-hidden='true'>
-                        <path d='m6 17 5-5-5-5'></path>
-                        <path d='m13 17 5-5-5-5'></path>
-                    </svg>
+                    <ChevronsRight className='hidden size-4 md:block' />
                 </a>
-                <button
-                    className='aoanp9uras e17v7y9h8h e2ta89ylda absolute flex h-8 items-center justify-center rounded-md'
-                    aria-label='Close announcement'>
-                    <svg
-                        xmlns='http://www.w3.org/2000/svg'
-                        width='24'
-                        height='24'
-                        viewBox='0 0 24 24'
-                        fill='none'
-                        stroke='currentColor'
-                        strokeWidth='2'
-                        strokeLinecap='round'
-                        strokeLinejoin='round'
-                        className='lucide lucide-x hwl3hi1opl size-4'
-                        aria-hidden='true'>
-                        <path d='M18 6 6 18'></path>
-                        <path d='m6 6 12 12'></path>
-                    </svg>
-                    <span className='qggw52vy9x'>Close</span>
-                </button>
+                <Button aria-label='Close announcement'>
+                    <X /> Close
+                </Button>
             </div>
         </aside>
     );

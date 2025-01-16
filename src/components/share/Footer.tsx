@@ -79,7 +79,7 @@ const Footer = () => {
                             </svg>
                         </a>
                         <nav
-                            className='qv1kumuppz u1fn3lscdp tx6zqi003j lt8yk4905z ifgtut3fk6 flex flex-col items-center gap-6'
+                            className='qv1kumuppz tx6zqi003j lt8yk4905z ifgtut3fk6 flex flex-col items-center gap-6 md:gap-8'
                             aria-label='Footer navigation'>
                             <a href='#' className='text-muted-foreground transition-colors hover:text-foreground'>
                                 Home
@@ -97,7 +97,7 @@ const Footer = () => {
                                 FAQ
                             </a>
                         </nav>
-                        <div className='mnhplcxq69 flex justify-center gap-4' aria-label='Social media links'>
+                        <div className='flex justify-center gap-4 md:gap-6' aria-label='Social media links'>
                             <a href='#' className='hx5kc1k0q0 ht1i5jz2y0 transition-all'>
                                 <svg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'>
                                     <path
@@ -139,7 +139,7 @@ const Footer = () => {
                         data-orientation='horizontal'
                         role='presentation'
                         className='h-px w-full shrink-0 bg-border'></div>
-                    <div className='qv1kumuppz mnhplcxq69 gug41ro6dg flex flex-col items-center justify-between gap-12 text-center'>
+                    <div className='qv1kumuppz gug41ro6dg flex flex-col items-center justify-between gap-12 text-center md:gap-6'>
                         <p className='s8bgy2liyi hd0298e7d2 text-muted-foreground'>
                             <span>Copyright © 2025</span>{' '}
                             <a href='/' className='hover:underline'>

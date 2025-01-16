@@ -22,14 +22,10 @@ const CtaSection = () => {
                             <div className='flex flex-col gap-3 md:flex-row'>
                                 <Button
                                     aria-label='Get started with our service'
-                                    className='h-10 bg-primary-foreground text-primary hover:bg-primary-foreground/80'>
+                                    className='bg-primary-foreground text-primary hover:bg-primary-foreground/80'>
                                     Get started
                                 </Button>
-                                <Button
-                                    aria-label='Learn more about our service'
-                                    className='h-10 bg-primary text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground'>
-                                    Learn more
-                                </Button>
+                                <Button aria-label='Learn more about our service'>Learn more</Button>
                             </div>
                         </div>
                     </div>
