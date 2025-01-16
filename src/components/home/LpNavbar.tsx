@@ -8,7 +8,7 @@ const LpNavbar = () => {
     return (
         <SectionPadding>
             <nav className='p326q379gc yaz7zb3viu l49ye52zks sg0yeae042 sticky w-full bg-background md:py-4'>
-                <div className='rp0hw4yydn msni5ifts7 container relative flex flex-col justify-between gap-4 px-6 md:flex-row md:gap-6'>
+                <div className='msni5ifts7 container relative flex flex-col justify-between gap-4 px-6 md:flex-row md:items-center md:gap-6'>
                     <div className='flex justify-between'>
                         <a href='/'>
                             <svg
