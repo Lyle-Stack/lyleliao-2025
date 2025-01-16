@@ -17,19 +17,19 @@ import RichTextSection from '@/components/share/RichTextSection';
 const HomePage = () => {
     return (
         <>
-            <LpNavbar />
-            <Banner />
+            {/* <LpNavbar /> */}
+            {/* <Banner /> */}
             <HeroSection />
             <FeatureSection />
-            <HeaderSection />
-            <BlogSection />
+            {/* <HeaderSection /> */}
             <CtaSection />
-            <TestimonialSection />
-            <PricingSection />
+            <BlogSection />
+            {/* <TestimonialSection /> */}
+            {/* <PricingSection /> */}
             <FaqSection />
-            <ContactSection />
+            {/* <ContactSection /> */}
             <Footer />
-            <RichTextSection />
+            {/* <RichTextSection /> */}
         </>
     );
 };

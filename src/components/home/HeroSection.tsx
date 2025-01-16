@@ -6,7 +6,7 @@ import { ArrowRight, Check } from 'lucide-react';
 const HeroSection = () => {
     return (
         <SectionPadding>
-            <section className='w-full bg-background py-24' aria-labelledby='hero-heading'>
+            <section className='w-full bg-background pb-16 pt-8 lg:pt-16' aria-labelledby='hero-heading'>
                 <div className='container mx-auto flex flex-col items-center gap-12 px-6 lg:flex-row lg:gap-16'>
                     <div className='flex flex-1 flex-col gap-8'>
                         <div className='flex flex-col gap-5'>
