@@ -63,7 +63,7 @@ const ContactSection = () => {
                     <div
                         data-orientation='horizontal'
                         role='none'
-                        className='eh7inv29a7 block h-px w-full shrink-0 bg-border'></div>
+                        className='block h-px w-full shrink-0 bg-border md:hidden'></div>
                     <div className='u8yc93heq6 uvx5h765py auuaj6huig ahfi9lnyrg flex flex-1 flex-col items-center'>
                         <div className='flex flex-1 flex-col gap-12'>
                             <a
@@ -84,8 +84,8 @@ const ContactSection = () => {
                                         <path d='M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z'></path>
                                     </svg>
                                 </div>
-                                <div className='h08z0mfnud flex flex-col text-center md:text-left'>
-                                    <h3 className='jrob98fumj text-base font-semibold text-card-foreground'>Call us</h3>
+                                <div className='flex flex-col gap-1 text-center md:text-left'>
+                                    <h3 className='text-base font-semibold leading-6 text-card-foreground'>Call us</h3>
                                     <span className='text-base text-muted-foreground underline'>+1 400 500 600</span>
                                 </div>
                             </a>
@@ -108,8 +108,8 @@ const ContactSection = () => {
                                         <path d='m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7'></path>
                                     </svg>
                                 </div>
-                                <div className='h08z0mfnud flex flex-col text-center md:text-left'>
-                                    <h3 className='jrob98fumj text-base font-semibold text-card-foreground'>
+                                <div className='flex flex-col gap-1 text-center md:text-left'>
+                                    <h3 className='text-base font-semibold leading-6 text-card-foreground'>
                                         Write an email
                                     </h3>
                                     <span className='text-base text-muted-foreground underline'>hello@example.com</span>
@@ -134,8 +134,8 @@ const ContactSection = () => {
                                         <circle cx='12' cy='10' r='3'></circle>
                                     </svg>
                                 </div>
-                                <div className='h08z0mfnud flex flex-col text-center md:text-left'>
-                                    <h3 className='jrob98fumj text-base font-semibold text-card-foreground'>
+                                <div className='flex flex-col gap-1 text-center md:text-left'>
+                                    <h3 className='text-base font-semibold leading-6 text-card-foreground'>
                                         Visit our office
                                     </h3>
                                     <span className='text-base text-muted-foreground underline'>

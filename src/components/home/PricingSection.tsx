@@ -58,7 +58,7 @@ const PricingSection = () => {
                                 <div className='flex flex-col gap-8 p-0'>
                                     <div className='flex flex-col gap-6'>
                                         <div className='relative flex flex-col gap-3'>
-                                            <h3 className='ecdib32nh2 font-semibold'>Basic</h3>
+                                            <h3 className='text-lg font-semibold'>Basic</h3>
                                             <p className='text-sm text-muted-foreground'>
                                                 Perfect for individuals and small projects
                                             </p>
@@ -196,7 +196,7 @@ const PricingSection = () => {
                                             <div className='qhwfihyfr3 d9zcucbj2q s2eb8uvr1q h3ycwtwyfk zdalnzsv7o cz3hnn3kxd pjw5enrhfm nqwzl10f6h blx1jzet3p u33y9iteac absolute inline-flex items-center rounded-full border bg-primary px-2.5 py-0.5 font-semibold text-primary-foreground transition-colors'>
                                                 Most popular
                                             </div>
-                                            <h3 className='ecdib32nh2 font-semibold text-primary'>Standard</h3>
+                                            <h3 className='text-lg font-semibold text-primary'>Standard</h3>
                                             <p className='text-sm text-muted-foreground'>
                                                 Ideal for growing teams and businesses
                                             </p>
@@ -368,7 +368,7 @@ const PricingSection = () => {
                                 <div className='flex flex-col gap-8 p-0'>
                                     <div className='flex flex-col gap-6'>
                                         <div className='relative flex flex-col gap-3'>
-                                            <h3 className='ecdib32nh2 font-semibold'>Premium</h3>
+                                            <h3 className='text-lg font-semibold'>Premium</h3>
                                             <p className='text-sm text-muted-foreground'>
                                                 For large enterprises and advanced needs
                                             </p>

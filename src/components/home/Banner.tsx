@@ -22,7 +22,7 @@ const Banner = () => {
                         strokeWidth='2'
                         strokeLinecap='round'
                         strokeLinejoin='round'
-                        className='lucide lucide-chevrons-right bghjsr92aw xmsj4s003r hwl3hi1opl hidden h-4'
+                        className='lucide lucide-chevrons-right xmsj4s003r hwl3hi1opl hidden h-4 md:block'
                         aria-hidden='true'>
                         <path d='m6 17 5-5-5-5'></path>
                         <path d='m13 17 5-5-5-5'></path>

@@ -79,7 +79,7 @@ const LpNavbar = () => {
                             </svg>
                         </a>
                         <button
-                            className='t7cqnwb3t5 z8qz7z24z5 a5kl6lcw50 zvgo0b9ibd vfebnb8zdd bktie8rnc1 k3r686zcbu k58g9qk9zh x6sv9fqmv5 ak25c0lfp3 bmguduyjua z9wzd5uhe3 eh7inv29a7 flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded-md px-4 py-2 text-sm font-medium ring-background transition-colors'
+                            className='t7cqnwb3t5 z8qz7z24z5 a5kl6lcw50 zvgo0b9ibd vfebnb8zdd bktie8rnc1 k3r686zcbu k58g9qk9zh x6sv9fqmv5 ak25c0lfp3 bmguduyjua z9wzd5uhe3 flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded-md px-4 py-2 text-sm font-medium ring-background transition-colors md:hidden'
                             aria-label='Open menu'>
                             <svg
                                 xmlns='http://www.w3.org/2000/svg'
@@ -99,7 +99,7 @@ const LpNavbar = () => {
                         </button>
                     </div>
                     <div className='u94mi7up5p lnqy1nz91d pxghgs6z3e hidden w-full gap-5'>
-                        <div className='h08z0mfnud flex flex-col md:flex-row'>
+                        <div className='flex flex-col gap-1 md:flex-row'>
                             <a href='#'>
                                 <button className='t7cqnwb3t5 z8qz7z24z5 a5kl6lcw50 zvgo0b9ibd vfebnb8zdd bktie8rnc1 k3r686zcbu k58g9qk9zh x6sv9fqmv5 ak25c0lfp3 bmguduyjua y52pooiefa inline-flex h-10 w-full items-center justify-center gap-2 whitespace-nowrap rounded-md px-4 py-2 text-sm font-medium ring-background transition-colors'>
                                     Products
