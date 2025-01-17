@@ -80,6 +80,7 @@
         @apply border-border;
     }
     body {
-        @apply bg-background text-foreground;
+        --font-sans: 'Noto Sans TC', 'Noto Sans';
+        @apply bg-background font-sans font-normal text-foreground;
     }
 }
