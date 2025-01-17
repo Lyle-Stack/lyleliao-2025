@@ -1,5 +1,3 @@
-import React from 'react';
-
 import Banner from '@/components/home/Banner';
 import BlogSection from '@/components/home/BlogSection';
 import ContactSection from '@/components/home/ContactSection';

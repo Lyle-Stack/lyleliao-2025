@@ -1,6 +1,7 @@
 import React from 'react';
 
 import SectionPadding from './SectionPadding';
+import { ChevronRight } from 'lucide-react';
 
 const HeaderSection = () => {
     return (
@@ -15,19 +16,7 @@ const HeaderSection = () => {
                                 </a>
                             </li>
                             <li role='presentation' aria-hidden='true' className='[&>svg]:size-3.5'>
-                                <svg
-                                    xmlns='http://www.w3.org/2000/svg'
-                                    width='24'
-                                    height='24'
-                                    viewBox='0 0 24 24'
-                                    fill='none'
-                                    stroke='currentColor'
-                                    strokeWidth='2'
-                                    strokeLinecap='round'
-                                    strokeLinejoin='round'
-                                    className='lucide lucide-chevron-right'>
-                                    <path d='m9 18 6-6-6-6'></path>
-                                </svg>
+                                <ChevronRight />
                             </li>
                             <li className='inline-flex items-center gap-1.5'>
                                 <a className='transition-colors hover:text-foreground' href='#'>
@@ -35,19 +24,7 @@ const HeaderSection = () => {
                                 </a>
                             </li>
                             <li role='presentation' aria-hidden='true' className='[&>svg]:size-3.5'>
-                                <svg
-                                    xmlns='http://www.w3.org/2000/svg'
-                                    width='24'
-                                    height='24'
-                                    viewBox='0 0 24 24'
-                                    fill='none'
-                                    stroke='currentColor'
-                                    strokeWidth='2'
-                                    strokeLinecap='round'
-                                    strokeLinejoin='round'
-                                    className='lucide lucide-chevron-right'>
-                                    <path d='m9 18 6-6-6-6'></path>
-                                </svg>
+                                <ChevronRight />
                             </li>
                             <li className='inline-flex items-center gap-1.5'>
                                 <span

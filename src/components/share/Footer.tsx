@@ -1,11 +1,8 @@
-import React from 'react';
-
-import Facebook from '../icon/Facebook';
+import Github from '../icon/Github';
 import Instagram from '../icon/Instagram';
 import LLLogo from '../icon/LLLogo';
-import Twitter from '../icon/Twitter';
-import WhatsApp from '../icon/WhatsApp';
-import YouTube from '../icon/YouTube';
+import Linkedin from '../icon/Linkedin';
+import { Separator } from '../ui/separator';
 import SectionPadding from './SectionPadding';
 
 const Footer = () => {
@@ -18,67 +15,42 @@ const Footer = () => {
                             <LLLogo />
                         </a>
                         <nav
-                            className='flex flex-col items-center gap-6 md:gap-8 lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:flex-row'
+                            className='flex flex-col items-center gap-6 md:gap-8 lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:flex-row [&>*]:text-muted-foreground [&>*]:transition-colors hover:[&>*]:text-foreground'
                             aria-label='Footer navigation'>
-                            <a href='#' className='text-muted-foreground transition-colors hover:text-foreground'>
-                                Home
-                            </a>
-                            <a href='#' className='text-muted-foreground transition-colors hover:text-foreground'>
-                                About Us
-                            </a>
-                            <a href='#' className='text-muted-foreground transition-colors hover:text-foreground'>
-                                Services
-                            </a>
-                            <a href='#' className='text-muted-foreground transition-colors hover:text-foreground'>
-                                Contact Us
-                            </a>
-                            <a href='#' className='text-muted-foreground transition-colors hover:text-foreground'>
-                                FAQ
-                            </a>
+                            <a href='/'>Home</a>
+                            <a href='/blog'>Blog</a>
                         </nav>
-                        <div className='flex justify-center gap-4 md:gap-6' aria-label='Social media links'>
-                            <a href='#' className='transition-all duration-300 hover:scale-110'>
-                                <Facebook />
-                            </a>
-                            <a href='#' className='transition-all duration-300 hover:scale-110'>
+                        <div
+                            className='flex justify-center gap-4 md:gap-6 [&>*]:transition-all [&>*]:duration-300 hover:[&>*]:scale-110'
+                            aria-label='Social media links'>
+                            <a href='https://www.instagram.com/liaochungyid/' target='_blank' rel='noreferrer'>
                                 <Instagram />
                             </a>
-                            <a href='#' className='transition-all duration-300 hover:scale-110'>
-                                <Twitter />
+                            <a href='https://www.linkedin.com/in/lyleliao/' target='_blank' rel='noreferrer'>
+                                <Linkedin />
                             </a>
-                            <a href='#' className='transition-all duration-300 hover:scale-110'>
-                                <YouTube />
-                            </a>
-                            <a href='#' className='transition-all duration-300 hover:scale-110'>
-                                <WhatsApp />
+                            <a href='https://github.com/lyle-Stack/' target='_blank' rel='noreferrer'>
+                                <Github />
                             </a>
                         </div>
                     </div>
-                    <div
-                        data-orientation='horizontal'
-                        role='presentation'
-                        className='h-px w-full shrink-0 bg-border'></div>
-                    <div className='gug41ro6dg flex flex-col items-center justify-between gap-12 text-center md:gap-6 lg:flex-row'>
-                        <p className='s8bgy2liyi hd0298e7d2 text-muted-foreground'>
+                    <Separator />
+                    <div className='flex flex-col items-center justify-between gap-12 text-center md:gap-6 lg:flex-row lg:text-left'>
+                        <p className='order-2 text-muted-foreground md:order-1'>
                             <span>Copyright © 2025</span>{' '}
                             <a href='/' className='hover:underline'>
-                                shadcndesign.com
+                                lyleliao.com
                             </a>
                             . All rights reserved.
                         </p>
-                        <nav
-                            className='zf0lo5lgh3 xhthgfdz75 m9vwlaus90 flex flex-col items-center gap-6 text-center md:flex-row'
+                        <p className='order-1 text-muted-foreground md:order-2'>Built by 廖仲逸 Lyle Liao</p>
+                        {/* <nav
+                            className='order-1 flex flex-col items-center gap-6 text-center md:order-2 md:flex-row md:gap-7 [&>*]:text-muted-foreground [&>*]:transition-colors hover:[&>*]:text-foreground'
                             aria-label='Legal links'>
-                            <a href='#' className='text-muted-foreground transition-colors hover:text-foreground'>
-                                Privacy Policy
-                            </a>
-                            <a href='#' className='text-muted-foreground transition-colors hover:text-foreground'>
-                                Terms of Service
-                            </a>
-                            <a href='#' className='text-muted-foreground transition-colors hover:text-foreground'>
-                                Cookies Settings
-                            </a>
-                        </nav>
+                            <a href='#'>Privacy Policy</a>
+                            <a href='#'>Terms of Service</a>
+                            <a href='#'>Cookies Settings</a>
+                        </nav> */}
                     </div>
                 </div>
             </footer>
