@@ -5,6 +5,7 @@ import { JSX, useEffect, useState } from 'react';
 import { useTheme } from 'next-themes';
 
 import { Button } from '@/components/ui/button';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 import { MonitorCog, Moon, Sun } from 'lucide-react';
 
@@ -19,17 +20,17 @@ interface SwitchOption {
 // prettier-ignore
 const SWITCH_DATA: SwitchOption[] = [
     {
-        name: 'System',
+        name: '系統',
         value: 'system',
         iconSvg: (<MonitorCog className='size-4' />),
     },
     {
-        name: 'Light',
+        name: '淺色',
         value: 'light',
         iconSvg: (<Sun className='size-4' />),
     },
     {
-        name: 'Dark',
+        name: '深色',
         value: 'dark',
         iconSvg: (<Moon className='size-4' />),
     },
@@ -38,28 +39,27 @@ const SWITCH_DATA: SwitchOption[] = [
 const ThemeSwitch: React.FC = () => {
     const { theme, setTheme } = useTheme();
 
-    // State to manage the component mount status
-    const [mounted, setMounted] = useState(false);
-
-    useEffect(() => setMounted(true), []);
-
     return (
-        <div className='flex max-w-fit flex-row justify-center overflow-hidden rounded-lg border border-border'>
-            {SWITCH_DATA.map((data) => (
-                <Button
-                    aria-selected={theme === data.value && mounted}
-                    variant='ghost'
-                    key={data.value}
-                    className='flex h-[38px] items-center gap-2 rounded-none border-border/50 bg-background/50 px-3.5 py-1.5 text-foreground first:rounded-l-sm last:rounded-r-sm aria-selected:bg-border/50'
-                    onClick={() => {
-                        console.log('Theme:', data.value);
-                        setTheme(data.value);
-                    }}>
-                    {data.iconSvg}
-                    <h3 className='hidden sm:block'>{data.name}</h3>
-                </Button>
-            ))}
-        </div>
+        // <div className='flex max-w-fit flex-row justify-center overflow-hidden rounded-lg border border-border'>
+        <Select onValueChange={setTheme} value={theme}>
+            <SelectTrigger className='w-[72px] sm:w-32' tabIndex={-1}>
+                <SelectValue placeholder='Theme' />
+            </SelectTrigger>
+            <SelectContent className='min-w-[72px] sm:min-w-32'>
+                {SWITCH_DATA.map((data) => (
+                    <SelectItem
+                        key={`theme-select-${data.value}`}
+                        value={data.value}
+                        tabIndex={-1}
+                        className='py-2 pl-4'>
+                        <div className='flex flex-nowrap items-center gap-2'>
+                            {data.iconSvg}
+                            <h3 className='hidden sm:block'>{data.name}</h3>
+                        </div>
+                    </SelectItem>
+                ))}
+            </SelectContent>
+        </Select>
     );
 };
 

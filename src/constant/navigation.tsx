@@ -20,14 +20,14 @@ export const NAVIGATION_LINKS: NavigationLink[] = [
         titleInNotFound: 'Go back to homepage',
         descInNotFound: 'Return to our main page to start fresh'
     },
-    {
-        name: 'Doc',
-        href: '/doc',
-        desc: 'Learn more about our features and capabilities',
-        icon: <File className='size-5' />,
-        titleInNotFound: 'Read our documentation',
-        descInNotFound: 'Learn more about our features and capabilities'
-    },
+    // {
+    //     name: 'Doc',
+    //     href: '/doc',
+    //     desc: 'Learn more about our features and capabilities',
+    //     icon: <File className='size-5' />,
+    //     titleInNotFound: 'Read our documentation',
+    //     descInNotFound: 'Learn more about our features and capabilities'
+    // },
     {
         name: 'Blog',
         href: '/blog',

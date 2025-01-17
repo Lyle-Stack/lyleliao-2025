@@ -8,7 +8,6 @@ import HeroSection from '@/components/home/HeroSection';
 import LpNavbar from '@/components/home/LpNavbar';
 import PricingSection from '@/components/home/PricingSection';
 import TestimonialSection from '@/components/home/TestimonialSection';
-import Footer from '@/components/share/Footer';
 import HeaderSection from '@/components/share/HeaderSection';
 import RichTextSection from '@/components/share/RichTextSection';
 
@@ -26,7 +25,6 @@ const HomePage = () => {
             {/* <PricingSection /> */}
             <FaqSection />
             {/* <ContactSection /> */}
-            <Footer />
             {/* <RichTextSection /> */}
         </>
     );
