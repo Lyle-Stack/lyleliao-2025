@@ -1,10 +1,7 @@
 import React from 'react';
 
-import Dribbble from '../icon/Dribbble';
-import Facebook from '../icon/Facebook';
-import Github from '../icon/Github';
-import Instagram from '../icon/Instagram';
 import SectionPadding from '../share/SectionPadding';
+import SocialLinks from '../share/SocialLinks';
 import { Mail, MapPin, Phone } from 'lucide-react';
 
 const ContactSection = () => {
@@ -24,20 +21,7 @@ const ContactSection = () => {
                                     commitment and highlight your team's readiness to help.
                                 </p>
                             </div>
-                            <div className='flex flex-row gap-5'>
-                                <a href='#' className='text-foreground transition-all duration-300 hover:scale-110'>
-                                    <Facebook />
-                                </a>
-                                <a href='#' className='text-foreground transition-all duration-300 hover:scale-110'>
-                                    <Instagram />
-                                </a>
-                                <a href='#' className='text-foreground transition-all duration-300 hover:scale-110'>
-                                    <Github />
-                                </a>
-                                <a href='#' className='text-foreground transition-all duration-300 hover:scale-110'>
-                                    <Dribbble />
-                                </a>
-                            </div>
+                            <SocialLinks className='gap-5 md:gap-5' />
                         </div>
                     </div>
                     <div

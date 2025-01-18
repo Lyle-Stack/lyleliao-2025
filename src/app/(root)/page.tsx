@@ -5,7 +5,6 @@ import CtaSection from '@/components/home/CtaSection';
 import FaqSection from '@/components/home/FaqSection';
 import FeatureSection from '@/components/home/FeatureSection';
 import HeroSection from '@/components/home/HeroSection';
-import LpNavbar from '@/components/home/LpNavbar';
 import PricingSection from '@/components/home/PricingSection';
 import TestimonialSection from '@/components/home/TestimonialSection';
 import HeaderSection from '@/components/share/HeaderSection';
@@ -14,8 +13,7 @@ import RichTextSection from '@/components/share/RichTextSection';
 const HomePage = () => {
     return (
         <>
-            {/* <LpNavbar /> */}
-            {/* <Banner /> */}
+            <Banner />
             <HeroSection />
             <FeatureSection />
             {/* <HeaderSection /> */}
@@ -23,7 +21,7 @@ const HomePage = () => {
             <BlogSection />
             {/* <TestimonialSection /> */}
             {/* <PricingSection /> */}
-            <FaqSection />
+            {/* <FaqSection /> */}
             {/* <ContactSection /> */}
             {/* <RichTextSection /> */}
         </>

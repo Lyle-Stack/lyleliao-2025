@@ -41,9 +41,9 @@ const ThemeSwitch: React.FC = () => {
 
     return (
         // <div className='flex max-w-fit flex-row justify-center overflow-hidden rounded-lg border border-border'>
-        <Select onValueChange={setTheme} value={theme}>
+        <Select onValueChange={setTheme} defaultValue='system' value={theme}>
             <SelectTrigger className='w-[72px] sm:w-32' tabIndex={-1}>
-                <SelectValue placeholder='Theme' />
+                <SelectValue placeholder='顏色主題' />
             </SelectTrigger>
             <SelectContent className='min-w-[72px] sm:min-w-32'>
                 {SWITCH_DATA.map((data) => (

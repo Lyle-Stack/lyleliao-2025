@@ -1,9 +1,7 @@
-import Github from '../icon/Github';
-import Instagram from '../icon/Instagram';
 import LLLogo from '../icon/LLLogo';
-import Linkedin from '../icon/Linkedin';
 import { Separator } from '../ui/separator';
 import SectionPadding from './SectionPadding';
+import SocialLinks from './SocialLinks';
 
 const Footer = () => {
     return (
@@ -20,19 +18,7 @@ const Footer = () => {
                             <a href='/'>Home</a>
                             <a href='/blog'>Blog</a>
                         </nav>
-                        <div
-                            className='flex justify-center gap-4 md:gap-6 [&>*]:transition-all [&>*]:duration-300 hover:[&>*]:scale-110'
-                            aria-label='Social media links'>
-                            <a href='https://www.instagram.com/liaochungyid/' target='_blank' rel='noreferrer'>
-                                <Instagram />
-                            </a>
-                            <a href='https://www.linkedin.com/in/lyleliao/' target='_blank' rel='noreferrer'>
-                                <Linkedin />
-                            </a>
-                            <a href='https://github.com/lyle-Stack/' target='_blank' rel='noreferrer'>
-                                <Github />
-                            </a>
-                        </div>
+                        <SocialLinks />
                     </div>
                     <Separator />
                     <div className='flex flex-col items-center justify-between gap-12 text-center md:gap-6 lg:flex-row lg:text-left'>
