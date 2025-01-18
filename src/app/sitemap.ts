@@ -13,13 +13,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
             lastModified: new Date(),
             changeFrequency: 'daily',
             priority: 0.8
-        },
-        // TODO: update the announcement to dynamic blog post
-        {
-            url: 'https://lyleliao.com/announcement',
-            lastModified: new Date(),
-            changeFrequency: 'weekly',
-            priority: 0.64
         }
+        // TODO: update the announcement to dynamic blog post
+        // {
+        //     url: 'https://lyleliao.com/announcement',
+        //     lastModified: new Date(),
+        //     changeFrequency: 'weekly',
+        //     priority: 0.64
+        // }
     ];
 }
