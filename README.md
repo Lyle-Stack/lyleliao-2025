@@ -105,8 +105,8 @@ To enhance development experience, install the following VS Code extensions:
 To use Docker, make sure Docker is installed on your machine. Then, build and run the Docker container:
 
 ```bash
-docker build -t nextjs-starter .
-docker run -p 3000:3000 nextjs-starter
+docker build -t nextjs-starter-shadcn .
+docker run -p 3000:3000 nextjs-starter-shadcn
 ```
 
 ### ☁ Try it in the Cloud

@@ -25,6 +25,11 @@ const nextConfig: NextConfig = {
                 hostname: 'ui.shadcn.com'
             }
         ]
+    },
+    experimental: {
+        turbo: {
+            resolveExtensions: ['.mdx', '.tsx', '.ts', '.jsx', '.js', '.mjs', '.json']
+        }
     }
 };
 
