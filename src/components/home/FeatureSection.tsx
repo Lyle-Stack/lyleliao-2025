@@ -7,10 +7,10 @@ const FeatureSection = () => {
     return (
         <SectionPadding>
             <section className='w-full bg-background py-16 md:py-24'>
-                <div className='container mx-auto flex flex-col gap-12 px-6 md:gap-16'>
+                <div className='container mx-auto flex flex-col gap-12 px-3 md:gap-16'>
                     <div className='mx-auto flex flex-col gap-4 md:gap-5 lg:text-center'>
                         <p className='text-sm font-semibold text-muted-foreground md:text-base'>
-                            Features that You Benefit
+                            Features that Benefit You
                         </p>
                         <h2 className='flex flex-wrap items-baseline gap-2 whitespace-nowrap text-3xl font-bold text-foreground md:text-4xl'>
                             AI Automation <X /> Website Builder <X /> AI Agent

@@ -5,8 +5,8 @@ import SectionPadding from './SectionPadding';
 const RichTextSection = () => {
     return (
         <SectionPadding>
-            <section className='w-full bg-background py-16 md:py-24'>
-                <div className='container mx-auto px-6'>
+            <section className='py-16 md:py-24'>
+                <div className='blog container mx-auto px-3'>
                     <article className='flex flex-col gap-12 md:gap-24' aria-labelledby='article-title'>
                         <div className='items-top tgdfdn15dl flex flex-col gap-8 lg:flex-row'>
                             <div className='flex flex-1 flex-col justify-between gap-6'>

@@ -8,9 +8,9 @@ import { RoughNotation } from 'react-rough-notation';
 const HeroSection = () => {
     return (
         <SectionPadding>
-            <section className='w-full bg-background pb-16 pt-8 lg:pt-16' aria-labelledby='hero-heading'>
-                <div className='container mx-auto flex flex-col items-center gap-12 px-6 lg:flex-row lg:gap-16'>
-                    <div className='flex flex-1 flex-col gap-8'>
+            <section className='w-full bg-background pt-8 lg:pt-16' aria-labelledby='hero-heading'>
+                <div className='container mx-auto flex flex-col items-center justify-center gap-12 px-3 lg:flex-row lg:gap-0'>
+                    <div className='flex max-w-3xl flex-1 flex-col gap-8'>
                         <div className='flex flex-col gap-5'>
                             <p className='text-xs font-semibold text-muted-foreground lg:text-base' aria-hidden='true'>
                                 經驗豐富的全端工程師，專精

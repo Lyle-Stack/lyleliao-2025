@@ -7,7 +7,7 @@ const HeaderSection = () => {
     return (
         <SectionPadding>
             <section className='w-full bg-background pb-16 pt-4 lg:pb-24' aria-labelledby='page-heading'>
-                <div className='container relative z-10 mx-auto flex flex-col gap-8 px-6 lg:gap-16'>
+                <div className='container relative z-10 mx-auto flex flex-col gap-8 px-3 lg:gap-16'>
                     <nav aria-label='Page navigation'>
                         <ol className='flex flex-wrap items-center gap-1.5 break-words text-sm text-muted-foreground sm:gap-2.5'>
                             <li className='inline-flex items-center gap-1.5'>

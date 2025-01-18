@@ -1,108 +1,90 @@
-import React from 'react';
+import { Fragment } from 'react';
 
+import { cn } from '@/lib/utils';
+
+import BlogHeaderSection from '../blog/BlogHeaderSection';
 import SectionPadding from '../share/SectionPadding';
 import { Separator } from '../ui/separator';
 
 const BlogSection = () => {
     return (
         <SectionPadding>
-            <section className='w-full bg-background py-16 md:py-24' aria-labelledby='blog-section-2-heading'>
-                <div className='container mx-auto px-6'>
+            <section className='py-16 md:py-24' aria-labelledby='blog-section-2-heading'>
+                <div className='container mx-auto px-3'>
                     <div className='flex flex-col items-start gap-12'>
-                        <div className='flex max-w-xl flex-col items-start gap-4 text-left md:gap-5'>
-                            <p className='text-base font-semibold text-muted-foreground md:text-sm'>Blog section</p>
-                            <h2 id='blog-section-2-heading' className='text-3xl font-bold leading-tight md:text-4xl'>
-                                Short and clear engaging headline for a blog
-                            </h2>
-                            <p className='text-base text-muted-foreground'>
-                                Add a concise value statement that captures reader interest and previews content value.
-                                Focus on benefits while keeping it under two lines. Align with your blog categories.
-                            </p>
-                        </div>
+                        <BlogHeaderSection />
                         <div className='grid grid-cols-1 gap-8 lg:grid-cols-3 lg:gap-6' role='list'>
-                            <div
-                                className='group flex cursor-pointer flex-col justify-between rounded-none border border-none bg-card text-card-foreground'
-                                role='listitem'>
-                                <div className='flex flex-col gap-3 p-0'>
-                                    <div className='flex items-center gap-2 text-left'>
-                                        <span className='text-sm text-muted-foreground'>Mar 15, 2024</span>
-                                        <span className='text-sm text-muted-foreground'>·</span>
-                                        <span className='text-sm text-muted-foreground'>Tutorial</span>
-                                    </div>
-                                    <h3 className='text-base font-semibold leading-normal hover:underline'>
-                                        Getting Started with shadcn/ui: A Complete Guide
-                                    </h3>
-                                    <p className='text-sm leading-normal text-muted-foreground'>
-                                        Learn how to set up and maximize your development workflow with shadcn/ui's
-                                        powerful component library.
-                                    </p>
-                                </div>
-                                <div className='mt-4 flex items-center gap-2 p-0 md:mt-6'>
-                                    <span className='relative flex size-10 shrink-0 overflow-hidden rounded-full'>
-                                        <img className='aspect-square size-full' src='https://github.com/shadcn.png' />
-                                    </span>
-                                    <div className='flex flex-1 flex-col items-start gap-0'>
-                                        <p className='text-sm font-medium text-foreground'>John Doe</p>
-                                        <p className='text-sm text-muted-foreground'>Developer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <Separator className='lg:hidden' />
-                            <div
-                                className='group flex cursor-pointer flex-col justify-between rounded-none border border-none bg-card text-card-foreground'
-                                role='listitem'>
-                                <div className='flex flex-col gap-3 p-0'>
-                                    <div className='flex items-center gap-2 text-left'>
-                                        <span className='text-sm text-muted-foreground'>Mar 12, 2024</span>
-                                        <span className='text-sm text-muted-foreground'>·</span>
-                                        <span className='text-sm text-muted-foreground'>Development</span>
-                                    </div>
-                                    <h3 className='text-base font-semibold leading-normal hover:underline'>
-                                        Building Dark Mode with Next.js and Tailwind CSS
-                                    </h3>
-                                    <p className='text-sm leading-normal text-muted-foreground'>
-                                        Implement a seamless dark mode toggle in your Next.js application using Tailwind
-                                        CSS and shadcn/ui.
-                                    </p>
-                                </div>
-                                <div className='mt-4 flex items-center gap-2 p-0 md:mt-6'>
-                                    <span className='relative flex size-10 shrink-0 overflow-hidden rounded-full'>
-                                        <img className='aspect-square size-full' src='https://github.com/shadcn.png' />
-                                    </span>
-                                    <div className='flex flex-1 flex-col items-start gap-0'>
-                                        <p className='text-sm font-medium text-foreground'>Jane Smith</p>
-                                        <p className='text-sm text-muted-foreground'>Designer</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <Separator className='lg:hidden' />
-                            <div
-                                className='group flex cursor-pointer flex-col justify-between rounded-none border border-none bg-card text-card-foreground'
-                                role='listitem'>
-                                <div className='flex flex-col gap-3 p-0'>
-                                    <div className='flex items-center gap-2 text-left'>
-                                        <span className='text-sm text-muted-foreground'>Mar 8, 2024</span>
-                                        <span className='text-sm text-muted-foreground'>·</span>
-                                        <span className='text-sm text-muted-foreground'>Advanced</span>
-                                    </div>
-                                    <h3 className='text-base font-semibold leading-normal hover:underline'>
-                                        Mastering React Server Components
-                                    </h3>
-                                    <p className='text-sm leading-normal text-muted-foreground'>
-                                        Deep dive into React Server Components and learn how they can improve your
-                                        application's performance.
-                                    </p>
-                                </div>
-                                <div className='mt-4 flex items-center gap-2 p-0 md:mt-6'>
-                                    <span className='relative flex size-10 shrink-0 overflow-hidden rounded-full'>
-                                        <img className='aspect-square size-full' src='https://github.com/shadcn.png' />
-                                    </span>
-                                    <div className='flex flex-1 flex-col items-start gap-0'>
-                                        <p className='text-sm font-medium text-foreground'>Alice Johnson</p>
-                                        <p className='text-sm text-muted-foreground'>Developer</p>
-                                    </div>
-                                </div>
-                            </div>
+                            {[
+                                {
+                                    time: 'Aug 17, 2024',
+                                    cat: 'Point of View',
+                                    title: 'Strategize Your Life，策畫你的人生，一篇 HBR (哈佛商業評論)文章',
+                                    author: 'Lyle 仲逸',
+                                    imgSrc: '/images/lyle-avatar.jpg',
+                                    href: '/blog/strategize-life',
+                                    role: 'AI Automation x Website Builder',
+                                    desc: '花費許多時間，很難找到有滿意的。更多是推銷書籍與課程的內容。我對這些廣告並不反感，因為真的需要一探究竟。令人困惑的是，他的餅畫得太美，簡直是「買必勝」的承諾。仔細看看，也確實他們可以做麼說，因為他們給了一堆指引，一堆要改變，一堆要立即執行的事情。'
+                                },
+                                {
+                                    time: 'Near future',
+                                    cat: 'Any Category',
+                                    title: '敬請期待',
+                                    author: ' ',
+                                    href: '',
+                                    imgSrc: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAQAAABIkb+zAAAAZUlEQVR42u3PQQ0AAAgEIK9/RrPo3wZu0ID01GsREBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQELgWLPOy4ZNPwR4AAAAASUVORK5CYII=',
+                                    role: ' ',
+                                    desc: 'Comming soon'
+                                },
+                                {
+                                    time: 'Near future',
+                                    cat: 'Any Category',
+                                    title: '敬請期待',
+                                    author: ' ',
+                                    href: '',
+                                    imgSrc: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAQAAABIkb+zAAAAZUlEQVR42u3PQQ0AAAgEIK9/RrPo3wZu0ID01GsREBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQELgWLPOy4ZNPwR4AAAAASUVORK5CYII=',
+                                    role: ' ',
+                                    desc: 'Comming soon'
+                                }
+                            ].map((item, index) => (
+                                <Fragment key={`blog-list-${index}`}>
+                                    <a
+                                        href={item.href}
+                                        className={cn(
+                                            'group/card group flex cursor-pointer flex-col gap-3 rounded-none border border-none bg-card text-card-foreground',
+                                            !item.href && 'cursor-default'
+                                        )}
+                                        role='listitem'>
+                                        <div className='text-sm text-muted-foreground'>
+                                            {item.time} · {item.cat}
+                                        </div>
+                                        <h3
+                                            className={cn(
+                                                'text-base font-semibold',
+                                                item.href && 'group-hover/card:underline'
+                                            )}>
+                                            {item.title}
+                                        </h3>
+                                        <p className='my-auto line-clamp-3 text-sm text-muted-foreground'>
+                                            {item.desc}
+                                        </p>
+                                        <div className='flex items-center gap-4 pt-1 md:pt-2'>
+                                            <span className='size-10 shrink-0 grow-0 overflow-hidden rounded-full'>
+                                                <img
+                                                    className='size-full object-cover'
+                                                    alt={item.author}
+                                                    src={item.imgSrc}
+                                                />
+                                            </span>
+                                            <div className='text-sm'>
+                                                <p className='font-medium text-foreground'>{item.author}</p>
+                                                <p className='text-muted-foreground'>{item.role}</p>
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                    <Separator className='last:hidden lg:hidden' />
+                                </Fragment>
+                            ))}
                         </div>
                     </div>
                 </div>

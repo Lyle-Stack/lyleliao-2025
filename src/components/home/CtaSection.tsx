@@ -8,7 +8,7 @@ const CtaSection = () => {
     return (
         <SectionPadding>
             <section className='w-full bg-background' aria-labelledby='cta-heading'>
-                <div className='container mx-auto md:px-6'>
+                <div className='container mx-auto md:px-3'>
                     <div className='bg-primary px-6 py-16 sm:rounded-xl md:p-16'>
                         <div className='flex w-full flex-col items-center justify-between gap-8 text-center md:flex-row md:text-left'>
                             <div className='flex max-w-xl flex-col gap-4'>

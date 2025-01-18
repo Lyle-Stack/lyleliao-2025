@@ -7,7 +7,7 @@ const Footer = () => {
     return (
         <SectionPadding>
             <footer className='w-full bg-background py-16 lg:py-24' role='contentinfo' aria-label='Site footer'>
-                <div className='container mx-auto flex flex-col gap-12 px-6 lg:gap-16'>
+                <div className='container mx-auto flex flex-col gap-12 px-3 lg:gap-16'>
                     <div className='relative flex flex-col items-center gap-12 md:items-center md:justify-between lg:flex-row lg:gap-8'>
                         <a href='/'>
                             <LLLogo />

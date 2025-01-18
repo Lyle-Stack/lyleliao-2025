@@ -75,6 +75,7 @@ export async function GET(request: Request): Promise<ImageResponse | Response> {
                     <div
                         tw='bg-white/30 flex flex-col border-2 w-full border-black/5 py-8 pl-32'
                         style={{
+                            whiteSpace: 'pre-wrap',
                             gap: '1rem',
                             backdropFilter: 'blur(8px)',
                             paddingRight: isNoImage ? 128 : 384,

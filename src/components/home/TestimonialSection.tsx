@@ -7,7 +7,7 @@ const TestimonialSection = () => {
     return (
         <SectionPadding>
             <section className='w-full bg-background py-16 md:py-24' aria-labelledby='testimonial-title'>
-                <div className='container mx-auto px-6'>
+                <div className='container mx-auto px-3'>
                     <div className='flex flex-col gap-12'>
                         <div className='flex max-w-xl flex-col gap-4 text-center md:gap-5 md:text-left'>
                             <p className='text-sm font-semibold leading-5 text-muted-foreground md:text-base md:leading-6'>

@@ -6,7 +6,7 @@ const FaqSection = () => {
     return (
         <SectionPadding>
             <section className='w-full bg-background py-16 md:py-24' aria-labelledby='faq-heading'>
-                <div className='container mx-auto flex flex-col gap-12 px-6 md:gap-16'>
+                <div className='container mx-auto flex flex-col gap-12 px-3 md:gap-16'>
                     <div className='mx-auto flex w-full flex-col gap-5 text-left md:max-w-xl md:text-center'>
                         <p className='text-sm font-semibold text-muted-foreground md:text-base'>FAQ section</p>
                         <h1 id='faq-heading' className='text-3xl font-bold text-foreground md:text-4xl'>

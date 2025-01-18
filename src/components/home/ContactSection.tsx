@@ -8,7 +8,7 @@ const ContactSection = () => {
     return (
         <SectionPadding>
             <section className='w-full bg-background py-16 md:py-24' aria-labelledby='contact-heading'>
-                <div className='group-has-[]: container mx-auto flex flex-col items-center gap-8 px-6 md:flex-row md:items-start md:gap-16'>
+                <div className='group-has-[]: container mx-auto flex flex-col items-center gap-8 px-3 md:flex-row md:items-start md:gap-16'>
                     <div className='flex flex-1 flex-col items-center justify-center'>
                         <div className='flex flex-col items-center gap-8 text-center md:items-start md:text-left'>
                             <div className='flex flex-col gap-4'>

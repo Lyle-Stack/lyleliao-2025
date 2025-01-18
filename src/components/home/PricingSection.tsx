@@ -12,7 +12,7 @@ const PricingSection = () => {
     return (
         <SectionPadding>
             <section className='w-full bg-background py-16 md:py-24' aria-labelledby='pricing-section-title'>
-                <div className='container mx-auto px-6'>
+                <div className='container mx-auto px-3'>
                     <div className='flex flex-col items-center gap-8'>
                         <div className='flex max-w-xl flex-col items-center gap-4 text-center md:gap-5'>
                             <p className='text-base font-semibold text-muted-foreground'>Pricing section</p>

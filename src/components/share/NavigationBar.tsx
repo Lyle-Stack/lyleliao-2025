@@ -67,7 +67,7 @@ const NavigationBar = () => {
             <SectionPadding>
                 <div>
                     <motion.div
-                        className='flex w-full items-center justify-between gap-6 px-6'
+                        className='flex w-full items-center justify-between gap-6 px-3'
                         variants={childVariants}
                         transition={{
                             ease: transitionEase,
