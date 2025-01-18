@@ -1,11 +1,7 @@
 import BlogSection from '@/components/home/BlogSection';
 
 const HomePage = () => {
-    return (
-        <>
-            <BlogSection />
-        </>
-    );
+    return <BlogSection />;
 };
 
 export default HomePage;
