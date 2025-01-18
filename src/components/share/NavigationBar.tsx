@@ -8,14 +8,7 @@ import LLLogo from '@/components/icon/LLLogo';
 import SectionPadding from '@/components/share/SectionPadding';
 import ThemeSwitch from '@/components/share/ThemeSwitch';
 import { Button } from '@/components/ui/button';
-import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger
-} from '@/components/ui/dialog';
+import { Dialog, DialogClose, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { NAVIGATION_LINKS } from '@/constant/navigation';
 
 import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
@@ -84,11 +77,16 @@ const NavigationBar = () => {
                                 </DialogTrigger>
                                 <DialogContent>
                                     <DialogHeader>
-                                        <DialogTitle>Are you absolutely sure?</DialogTitle>
-                                        <DialogDescription>
-                                            This action cannot be undone. This will permanently delete your account and
-                                            remove your data from our servers.
-                                        </DialogDescription>
+                                        <DialogTitle>Where Are You Going?</DialogTitle>
+                                        <div className='flex flex-col flex-nowrap items-center gap-2 py-4'>
+                                            {NAVIGATION_LINKS.map((link) => (
+                                                <DialogClose key={link.name} asChild>
+                                                    <Link href={link.href} aria-description={link.desc}>
+                                                        <Button variant='ghost'>{link.name}</Button>
+                                                    </Link>
+                                                </DialogClose>
+                                            ))}
+                                        </div>
                                     </DialogHeader>
                                 </DialogContent>
                             </Dialog>
