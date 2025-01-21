@@ -24,7 +24,7 @@ const HeroSection = () => {
                             </p>
                             <h1 id='hero-heading' className='text-3xl font-bold text-foreground md:text-5xl'>
                                 <RoughNotation type='highlight' show={true} animationDelay={1200} iterations={1}>
-                                    <span className='text-primary'>Lyle 成就您</span>
+                                    <span className='text-accent dark:text-primary'>Lyle 成就您</span>
                                 </RoughNotation>
                                 <br />
                                 <span className='leading-snug'>用科技解鎖無限可能</span>

@@ -8,7 +8,6 @@ const DEFAULT_TITLE = 'Lyle, AI 自動化 & 網頁開發者';
 const DEFAULT_DESC =
     '人人都該有的 AI 自動化時代， Lyle 網頁全端開發 x AI 驅動，創建你的數位未來，運用科技姐所無限未來，幫助您實現夢想。';
 
-// TODO remove this api route and use the og route
 /**
  * Handles the GET request to generate an Open Graph (OG) image.
  *

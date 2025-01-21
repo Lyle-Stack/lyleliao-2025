@@ -1,25 +1,21 @@
 import type { MetadataRoute } from 'next';
 
-export default function sitemap(): MetadataRoute.Sitemap {
-    return [
-        {
-            url: 'https://lyleliao.com',
-            lastModified: new Date(),
-            changeFrequency: 'monthly',
-            priority: 1
-        },
-        {
-            url: 'https://lyleliao.com/blog',
-            lastModified: new Date(),
-            changeFrequency: 'daily',
-            priority: 0.8
-        }
-        // TODO: update the announcement to dynamic blog post
-        // {
-        //     url: 'https://lyleliao.com/announcement',
-        //     lastModified: new Date(),
-        //     changeFrequency: 'weekly',
-        //     priority: 0.64
-        // }
-    ];
+import { getBlogPosts } from './(root)/blog/utils';
+
+export const BASE_URL = process.env.NODE_ENV !== 'production' ? 'http://localhost:3000' : 'https://lyleliao.com';
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+    const defaultLastModified = new Date().toISOString().split('T')[0];
+
+    const routes = ['', '/blog'].map((route) => ({
+        url: `${BASE_URL}${route}`,
+        lastModified: defaultLastModified
+    }));
+
+    const blogs = getBlogPosts().map((post) => ({
+        url: `${BASE_URL}/blog/${post.slug}`,
+        lastModified: post.metadata?.publishedAt ?? defaultLastModified
+    }));
+
+    return [...routes, ...blogs];
 }

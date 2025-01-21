@@ -1,14 +1,11 @@
-import Footer from '@/components/share/Footer';
-import NavigationBar from '@/components/share/NavigationBar';
 import SectionPadding from '@/components/share/SectionPadding';
 import { NAVIGATION_LINKS, NavigationLink, randomTextEmoji } from '@/constant/navigation';
 
 import { ChevronRight } from 'lucide-react';
 
-export default function NotFound() {
+const NotFoundCatchAll = () => {
     return (
-        <main className='flex min-h-svh flex-col justify-between'>
-            <NavigationBar />
+        <main className='py-8 md:pt-16 lg:pt-24'>
             <SectionPadding>
                 <section
                     className='relative flex w-full flex-col items-center overflow-hidden bg-background py-8 lg:py-12'
@@ -42,10 +39,9 @@ export default function NotFound() {
                     </div>
                 </section>
             </SectionPadding>
-            <Footer />
         </main>
     );
-}
+};
 
 type NotFountLinksProps = Pick<NavigationLink, 'href' | 'descInNotFound' | 'titleInNotFound' | 'icon'>;
 
@@ -65,3 +61,5 @@ const NotFountLinks = ({ href, icon, descInNotFound: desc, titleInNotFound: titl
         </a>
     );
 };
+
+export default NotFoundCatchAll;
