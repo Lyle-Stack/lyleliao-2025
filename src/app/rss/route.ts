@@ -3,7 +3,6 @@ import { BASE_URL } from '../sitemap';
 
 export async function GET() {
     const allBlogs = getBlogPosts();
-    const defaultLastModified = new Date();
 
     const itemsXml = allBlogs
         .filter((blog) => blog.metadata)

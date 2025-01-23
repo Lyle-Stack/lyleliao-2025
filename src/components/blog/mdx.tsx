@@ -2,12 +2,13 @@ import React from 'react';
 
 import Link from 'next/link';
 
+import { HEADER_SLUG_PREFIX } from '@/app/(root)/blog/utils';
+
 import { fromHtmlIsomorphic } from 'hast-util-from-html-isomorphic';
 import { MDXRemote, MDXRemoteProps } from 'next-mdx-remote/rsc';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
-import remarkToc from 'remark-toc';
 import { highlight } from 'sugar-high';
 
 function Table({ data }: { data: { headers: string[]; rows: string[][] } }) {
@@ -72,9 +73,9 @@ export function CustomMDX(props: Omit<MDXRemoteProps, 'options'>) {
             components={{ ...components, ...(props.components || {}) }}
             options={{
                 mdxOptions: {
-                    remarkPlugins: [remarkGfm, remarkToc],
+                    remarkPlugins: [remarkGfm],
                     rehypePlugins: [
-                        rehypeSlug,
+                        [rehypeSlug, { prefix: HEADER_SLUG_PREFIX }],
                         [
                             rehypeAutolinkHeadings,
                             {

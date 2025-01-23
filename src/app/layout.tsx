@@ -69,12 +69,16 @@ export const metadata: Metadata = {
 };
 
 const Layout = ({ children }: Readonly<{ children: ReactNode }>) => {
+    // const nonce = (await headers()).get('x-nonce')
+
     return (
         // ? https://github.com/pacocoursey/next-themes?tab=readme-ov-file#with-app
         // ? https://react.dev/reference/react-dom/client/hydrateRoot#suppressing-unavoidable-hydration-mismatch-errors
         <html suppressHydrationWarning lang='zh-TW' className='scroll-smooth'>
             <body className='antialiased'>
-                <ThemeProvider attribute='class'>{children}</ThemeProvider>
+                <ThemeProvider nonce='NmYxNTcyMDYtMTE1Ni00MjA1LTllM2ItMGU4MjUzYmEyMDhk' attribute='class'>
+                    {children}
+                </ThemeProvider>
                 <Analytics />
                 <SpeedInsights />
             </body>

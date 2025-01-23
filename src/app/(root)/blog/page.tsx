@@ -6,8 +6,8 @@ export const metadata: Metadata = {
     title: 'Blog x AI x Life'
 };
 
-const HomePage = () => {
+const BlogPage = () => {
     return <BlogSection />;
 };
 
-export default HomePage;
+export default BlogPage;

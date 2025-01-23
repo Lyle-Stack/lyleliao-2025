@@ -1,25 +1,38 @@
 import fs from 'fs';
+import { slug } from 'github-slugger';
 import path from 'path';
 
-type Metadata = {
+export type Metadata = {
     title: string;
     publishedAt: string;
     summary: string;
     image?: string;
 };
 
+export const HEADER_SLUG_PREFIX = 'anchor-';
+
 function parseFrontmatter(fileContent: string) {
     const frontmatterRegex = /---\s*([\s\S]*?)\s*---/;
-    const match = frontmatterRegex.exec(fileContent);
+    const content = fileContent.replace(frontmatterRegex, '').trim();
 
+    // ? https://stackoverflow.com/questions/70801756/regex-extract-all-headers-from-markdown-string
+    // see...[https://regex101.com/r/n6XQub/4]
+    const headersRegex = /(?<flag>#{1,6})\s+(?<content>.+)/g;
+    const headers = Array.from(content.matchAll(headersRegex)).map(({ groups }, index) => ({
+        level: groups?.flag.length ?? 0,
+        content: groups?.content,
+        slug: `${HEADER_SLUG_PREFIX}${slug(groups?.content ?? index.toString())}`
+    }));
+
+    const match = frontmatterRegex.exec(fileContent);
     const frontMatterBlock = match?.[1];
     if (!frontMatterBlock) {
         return {
-            content: fileContent
+            content,
+            headers
         };
     }
 
-    const content = fileContent.replace(frontmatterRegex, '').trim();
     const frontMatterLines = frontMatterBlock.trim().split('\n');
     const metadata: Partial<Metadata> = {};
 
@@ -30,7 +43,7 @@ function parseFrontmatter(fileContent: string) {
         metadata[key.trim() as keyof Metadata] = value;
     });
 
-    return { metadata: metadata as Metadata, content };
+    return { metadata: metadata as Metadata, content, headers };
 }
 
 function getMDXFiles(dir: string) {
@@ -47,13 +60,14 @@ function getMDXData(dir: string) {
     const mdxFiles = getMDXFiles(dir);
 
     return mdxFiles.map((file) => {
-        const { metadata, content } = readMDXFile(path.join(dir, file));
+        const { metadata, content, headers } = readMDXFile(path.join(dir, file));
         const slug = path.basename(file, path.extname(file));
 
         return {
             metadata,
             slug,
-            content
+            content,
+            headers
         };
     });
 }
