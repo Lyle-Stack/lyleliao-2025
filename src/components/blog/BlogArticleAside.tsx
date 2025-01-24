@@ -10,14 +10,15 @@ const BlogArticleAside = ({
     }[];
 }>) => {
     return (
-        <aside className='sticky top-24 hidden flex-col gap-5 self-start text-sm font-medium text-foreground lg:flex lg:max-w-48'>
+        <aside className='text-foreground sticky top-24 hidden flex-col gap-5 self-start text-sm font-medium lg:flex lg:max-w-48'>
             <span>On this page</span>
-            <nav className='flex flex-col gap-3 text-muted-foreground hover:[&>a]:text-foreground'>
+            <nav className='flex flex-col gap-3'>
                 {headers.map((header) => (
                     <a
                         key={header.slug}
                         href={`#${header.slug}`}
                         className={cn(
+                            'text-muted-foreground hover:text-foreground',
                             !header.level || (header.level > 3 && 'hidden'),
                             header.level === 1 && 'font-semibold',
                             header.level === 2 && 'pl-4',

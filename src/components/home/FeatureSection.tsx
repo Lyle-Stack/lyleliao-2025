@@ -6,16 +6,16 @@ import { ArrowRight, Rocket, X } from 'lucide-react';
 const FeatureSection = () => {
     return (
         <SectionPadding>
-            <section className='w-full bg-background py-16 md:py-24'>
-                <div className='container mx-auto flex flex-col gap-12 px-3 md:gap-16'>
+            <section className='bg-background w-full py-16 md:py-24'>
+                <div className='mx-auto flex flex-col gap-12 px-3 md:gap-16'>
                     <div className='mx-auto flex flex-col gap-4 md:gap-5 lg:text-center'>
-                        <p className='text-sm font-semibold text-muted-foreground md:text-base'>
+                        <p className='text-muted-foreground text-sm font-semibold md:text-base'>
                             Features that Benefit You
                         </p>
-                        <h2 className='flex flex-wrap items-baseline gap-2 whitespace-nowrap text-3xl font-bold text-foreground md:text-4xl'>
+                        <h2 className='text-foreground flex flex-wrap items-baseline gap-2 text-3xl font-bold whitespace-nowrap md:text-4xl'>
                             AI Automation <X /> Website Builder <X /> AI Agent
                         </h2>
-                        <p className='text-base text-muted-foreground'>
+                        <p className='text-muted-foreground text-base'>
                             用熱情與專業，為您的專案注入新的活力，創造出令人驚豔的成果
                         </p>
                     </div>
@@ -35,11 +35,11 @@ const FeatureSection = () => {
                             }
                         ].map((feature, index) => (
                             <div className='flex flex-col gap-5' key={`feature-section-${index}`}>
-                                <div className='flex size-10 shrink-0 items-center justify-center rounded-md border bg-muted shadow-sm'>
-                                    <Rocket className='size-5 text-primary' />
+                                <div className='bg-muted flex size-10 shrink-0 items-center justify-center rounded-md border shadow-xs'>
+                                    <Rocket className='text-primary size-5' />
                                 </div>
                                 <div className='flex flex-col gap-2'>
-                                    <h3 className='font-semibold text-foreground'>{feature.title}</h3>
+                                    <h3 className='text-foreground font-semibold'>{feature.title}</h3>
                                     <p className='text-muted-foreground'>{feature.desc}</p>
                                 </div>
                                 {/* <a

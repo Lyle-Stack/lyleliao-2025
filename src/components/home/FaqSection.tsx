@@ -5,11 +5,11 @@ import SectionPadding from '../share/SectionPadding';
 const FaqSection = () => {
     return (
         <SectionPadding>
-            <section className='w-full bg-background py-16 md:py-24' aria-labelledby='faq-heading'>
-                <div className='container mx-auto flex flex-col gap-12 px-3 md:gap-16'>
+            <section className='bg-background w-full py-16 md:py-24' aria-labelledby='faq-heading'>
+                <div className='mx-auto flex flex-col gap-12 px-3 md:gap-16'>
                     <div className='mx-auto flex w-full flex-col gap-5 text-left md:max-w-xl md:text-center'>
-                        <p className='text-sm font-semibold text-muted-foreground md:text-base'>FAQ section</p>
-                        <h1 id='faq-heading' className='text-3xl font-bold text-foreground md:text-4xl'>
+                        <p className='text-muted-foreground text-sm font-semibold md:text-base'>FAQ section</p>
+                        <h1 id='faq-heading' className='text-foreground text-3xl font-bold md:text-4xl'>
                             Frequently asked questions
                         </h1>
                         <p className='text-muted-foreground'>
@@ -57,10 +57,10 @@ const FaqSection = () => {
                         ].map(({ question, answer }, index) => (
                             <div
                                 key={`faq-section-${index}`}
-                                className='flex flex-col gap-2 border-t border-border pt-6 md:flex-row md:gap-6 md:pt-8'
+                                className='border-border flex flex-col gap-2 border-t pt-6 md:flex-row md:gap-6 md:pt-8'
                                 role='listitem'>
-                                <h2 className='flex-1 text-base font-medium text-foreground'>{question}</h2>
-                                <p className='flex-1 text-muted-foreground'>{answer}</p>
+                                <h2 className='text-foreground flex-1 text-base font-medium'>{question}</h2>
+                                <p className='text-muted-foreground flex-1'>{answer}</p>
                             </div>
                         ))}
                     </div>

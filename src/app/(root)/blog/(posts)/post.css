@@ -1,75 +1,81 @@
-section > .blog.container > article > main {
-    @apply max-w-3xl;
+@import 'tailwindcss';
 
-    h1,
-    h2,
-    h3,
-    p,
-    ul,
-    ol {
-        @apply py-3;
-    }
+@import '../../../globals.css';
 
-    hr,
-    blockquote {
-        @apply my-3;
-    }
+@layer components {
+    section > .blog > article > main {
+        @apply max-w-3xl;
 
-    h1 {
-        @apply scroll-mt-24 text-4xl font-bold text-foreground lg:text-5xl;
-    }
+        h1,
+        h2,
+        h3,
+        p,
+        ul,
+        ol {
+            @apply py-3;
+        }
 
-    h2 {
-        @apply mt-8 scroll-mt-24 border-b pb-2 text-3xl font-semibold;
-    }
+        hr,
+        blockquote {
+            @apply my-3;
+        }
 
-    h3 {
-        @apply mt-8 scroll-mt-24 text-2xl font-semibold;
-    }
+        h1 {
+            @apply text-foreground scroll-mt-24 text-4xl font-bold lg:text-5xl;
+        }
 
-    p {
-        @apply text-lg leading-relaxed;
-    }
+        h2 {
+            @apply mt-8 scroll-mt-24 border-b pb-2 text-3xl font-semibold;
+        }
 
-    P:first-of-type {
-        @apply pt-0;
-    }
+        h3 {
+            @apply mt-8 scroll-mt-24 text-2xl font-semibold;
+        }
 
-    p + h3 {
-        @apply -mb-3;
-    }
+        p {
+            @apply text-lg leading-relaxed;
+        }
 
-    ul,
-    ol {
-        @apply ml-6 space-y-2;
-    }
+        P:first-of-type {
+            @apply pt-0;
+        }
 
-    ul {
-        @apply list-disc;
-    }
+        p + h3 {
+            @apply -mb-3;
+        }
 
-    ol {
-        @apply list-decimal;
-    }
+        ul,
+        ol {
+            @apply ml-6 space-y-2;
+        }
 
-    li > p {
-        @apply py-0 leading-normal;
-    }
+        ul {
+            @apply list-disc;
+        }
 
-    blockquote {
-        @apply border-l-2 border-primary pl-6 italic;
-    }
+        ol {
+            @apply list-decimal;
+        }
 
-    picture,
-    img {
-        @apply mx-auto max-h-96 object-contain;
-    }
+        li > p {
+            @apply py-0 leading-normal;
+        }
 
-    figure {
-        @apply text-balance py-1.5 text-center text-sm text-muted-foreground;
-    }
+        blockquote {
+            @apply border-primary border-l-2 pl-6 italic;
+        }
 
-    a {
-        @apply underline-offset-4 hover:underline;
+        picture,
+        img {
+            @apply mx-auto max-h-96 object-contain;
+        }
+
+        figure {
+            @apply text-muted-foreground py-1.5 text-center text-sm text-balance;
+        }
+
+        a {
+            @apply underline-offset-4 hover:underline;
+        }
     }
 }

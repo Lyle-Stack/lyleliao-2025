@@ -10,7 +10,7 @@ const BlogSection = () => {
     return (
         <SectionPadding>
             <section className='py-16 md:py-24' aria-labelledby='blog-section-2-heading'>
-                <div className='container mx-auto px-3'>
+                <div className='mx-auto px-3'>
                     <div className='flex flex-col items-start gap-12'>
                         <BlogHeaderSection />
                         <div className='grid grid-cols-1 gap-8 lg:grid-cols-3 lg:gap-6' role='list'>
@@ -50,11 +50,11 @@ const BlogSection = () => {
                                     <a
                                         href={item.href}
                                         className={cn(
-                                            'group/card group flex cursor-pointer flex-col gap-3 rounded-none border border-none bg-card text-card-foreground',
+                                            'group/card group bg-card text-card-foreground flex cursor-pointer flex-col gap-3 rounded-none border border-none',
                                             !item.href && 'cursor-default'
                                         )}
                                         role='listitem'>
-                                        <div className='text-sm text-muted-foreground'>
+                                        <div className='text-muted-foreground text-sm'>
                                             {item.time} · {item.cat}
                                         </div>
                                         <h3
@@ -64,7 +64,7 @@ const BlogSection = () => {
                                             )}>
                                             {item.title}
                                         </h3>
-                                        <p className='my-auto line-clamp-3 text-sm text-muted-foreground'>
+                                        <p className='text-muted-foreground my-auto line-clamp-3 text-sm'>
                                             {item.desc}
                                         </p>
                                         <div className='flex items-center gap-4 pt-1 md:pt-2'>
@@ -76,7 +76,7 @@ const BlogSection = () => {
                                                 />
                                             </span>
                                             <div className='text-sm'>
-                                                <p className='font-medium text-foreground'>{item.author}</p>
+                                                <p className='text-foreground font-medium'>{item.author}</p>
                                                 <p className='text-muted-foreground'>{item.role}</p>
                                             </div>
                                         </div>

@@ -1,10 +1,9 @@
 'use client';
 
-import { JSX, useEffect, useState } from 'react';
+import { JSX } from 'react';
 
 import { useTheme } from 'next-themes';
 
-import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 import { MonitorCog, Moon, Sun } from 'lucide-react';

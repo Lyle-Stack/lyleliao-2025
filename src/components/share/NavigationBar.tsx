@@ -15,7 +15,7 @@ import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
 import { Menu } from 'lucide-react';
 
 // ? https://john.design/journal/nav-show-hide
-/** Define variants for the parent container styles **/
+/** Define variants for the parent styles **/
 const parentVariants = {
     /** Define the "visible" state and its styles **/
     visible: { opacity: 1, y: 0 },
@@ -49,7 +49,7 @@ const NavigationBar = () => {
 
     return (
         <motion.nav
-            className='sticky right-0 top-0 isolate z-50 border-b border-border/50 bg-background/10 py-3.5 backdrop-blur md:py-4'
+            className='border-border/50 bg-background/10 sticky top-0 right-0 isolate z-50 border-b py-3.5 backdrop-blur-sm md:py-4'
             variants={parentVariants}
             animate={hidden ? 'hidden' : 'visible'}
             transition={{

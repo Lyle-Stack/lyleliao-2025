@@ -6,20 +6,20 @@ const RichTextSection = () => {
     return (
         <SectionPadding>
             <section className='py-16 md:py-24'>
-                <div className='blog container mx-auto px-3'>
+                <div className='blog mx-auto px-3'>
                     <article className='flex flex-col gap-12 md:gap-24' aria-labelledby='article-title'>
                         <div className='items-top tgdfdn15dl flex flex-col gap-8 lg:flex-row'>
                             <div className='flex flex-1 flex-col justify-between gap-6'>
                                 <div className='flex flex-col gap-4 md:gap-5'>
                                     <div className='flex items-center gap-2'>
-                                        <p className='text-sm leading-5 text-muted-foreground'>Nov 11, 2024</p>
-                                        <span className='text-sm leading-5 text-muted-foreground'>·</span>
-                                        <p className='text-sm leading-5 text-muted-foreground'>Articles</p>
+                                        <p className='text-muted-foreground text-sm leading-5'>Nov 11, 2024</p>
+                                        <span className='text-muted-foreground text-sm leading-5'>·</span>
+                                        <p className='text-muted-foreground text-sm leading-5'>Articles</p>
                                     </div>
-                                    <h1 id='article-title' className='text-4xl font-bold text-foreground lg:text-5xl'>
+                                    <h1 id='article-title' className='text-foreground text-4xl font-bold lg:text-5xl'>
                                         Short and clear engaging headline
                                     </h1>
-                                    <p className='text-lg leading-7 text-muted-foreground'>
+                                    <p className='text-muted-foreground text-lg leading-7'>
                                         Add a concise value statement that captures reader interest and previews content
                                         value. Focus on benefits while keeping it under two lines. Align with your blog
                                         categories.
@@ -34,8 +34,8 @@ const RichTextSection = () => {
                                         />
                                     </span>
                                     <div className='flex flex-col'>
-                                        <p className='text-sm font-medium leading-5 text-foreground'>Lando Norris</p>
-                                        <p className='text-sm leading-5 text-muted-foreground'>Product Designer</p>
+                                        <p className='text-foreground text-sm leading-5 font-medium'>Lando Norris</p>
+                                        <p className='text-muted-foreground text-sm leading-5'>Product Designer</p>
                                     </div>
                                 </div>
                             </div>
@@ -116,26 +116,26 @@ const RichTextSection = () => {
                                 </p>
                             </div>
                             <aside className='hidden flex-col gap-5 lg:flex'>
-                                <span className='text-sm font-medium text-foreground'>On this page</span>
+                                <span className='text-foreground text-sm font-medium'>On this page</span>
                                 <nav className='flex flex-col gap-3'>
                                     <a
                                         href='#the-kings-plan'
-                                        className='text-sm text-muted-foreground hover:text-foreground'>
+                                        className='text-muted-foreground hover:text-foreground text-sm'>
                                         The King's Plan
                                     </a>
                                     <a
                                         href='#the-joke-tax'
-                                        className='text-sm text-muted-foreground hover:text-foreground'>
+                                        className='text-muted-foreground hover:text-foreground text-sm'>
                                         The Joke Tax
                                     </a>
                                     <a
                                         href='#jokesters-revolt'
-                                        className='text-sm text-muted-foreground hover:text-foreground'>
+                                        className='text-muted-foreground hover:text-foreground text-sm'>
                                         Jokester's Revolt
                                     </a>
                                     <a
                                         href='#the-peoples-rebellion'
-                                        className='text-sm text-muted-foreground hover:text-foreground'>
+                                        className='text-muted-foreground hover:text-foreground text-sm'>
                                         The People's Rebellion
                                     </a>
                                 </nav>

@@ -77,10 +77,10 @@ export default async function Blog({ params }: Props) {
     return (
         <SectionPadding>
             <section>
-                <div className='blog container mx-auto px-3'>
+                <div className='blog mx-auto px-3'>
                     {post.metadata && <BlogPostHeaderSection metadata={post.metadata} />}
                     <article
-                        className='relative flex flex-row justify-center gap-12 border-x border-border px-4'
+                        className='border-border relative flex flex-row justify-center gap-12 border-x px-4'
                         aria-labelledby='article-title'>
                         <main>
                             <CustomMDX source={post.content} />
