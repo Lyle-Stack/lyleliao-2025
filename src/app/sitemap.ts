@@ -2,7 +2,9 @@ import type { MetadataRoute } from 'next';
 
 import { getBlogPosts } from './(root)/blog/utils';
 
-export const BASE_URL = process.env.NODE_ENV !== 'production' ? 'http://localhost:3000' : 'https://lyleliao.com';
+export const BASE_URL = new URL(
+    process.env.NODE_ENV !== 'production' ? 'http://localhost:3000' : 'https://lyleliao.com'
+);
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const defaultLastModified = new Date().toISOString().split('T')[0];

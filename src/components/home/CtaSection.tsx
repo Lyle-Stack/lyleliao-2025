@@ -19,7 +19,7 @@ const CtaSection = () => {
                                     熱衷於將複雜的技術轉化為簡單易用的產品，讓科技為您的生活和工作帶來便利。我的經驗與專業知識，將協助您解決各種技術挑戰，打造出符合您需求的客製化解決方案。
                                 </p>
                             </div>
-                            <SocialLinks className='' />
+                            <SocialLinks className='text-primary-foreground' />
                             {/* <div className='flex flex-col gap-3 md:flex-row'>
                                 <Button
                                     aria-label='Get started with our service'

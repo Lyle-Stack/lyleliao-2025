@@ -13,7 +13,7 @@ import RichTextSection from '@/components/share/RichTextSection';
 const HomePage = () => {
     return (
         <>
-            <Banner />
+            {/* <Banner /> */}
             <HeroSection />
             <FeatureSection />
             {/* <HeaderSection /> */}

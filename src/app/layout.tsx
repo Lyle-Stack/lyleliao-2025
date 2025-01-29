@@ -17,6 +17,7 @@ const DESCRIPTION =
     '人人都該有的 AI 自動化時代, Lyle 網頁全端開發 x AI 驅動,創建你的數位未來,運用科技解鎖無限未來,幫助您實現夢想。';
 
 export const metadata: Metadata = {
+    metadataBase: BASE_URL,
     title: {
         template: `%s | ${NAME}`,
         default: TITLE
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
     description: DESCRIPTION,
     authors: {
         name: NAME,
-        url: '#'
+        url: '/'
     },
     keywords: [NAME, 'AI Automation', 'AI 自動化', 'Wesite Builder', '網頁開發'],
     referrer: 'origin-when-cross-origin',
@@ -39,6 +40,7 @@ export const metadata: Metadata = {
             index: true,
             follow: true,
             noimageindex: true,
+            nosnippet: false,
             'max-video-preview': -1,
             'max-image-preview': 'large',
             'max-snippet': -1
@@ -76,7 +78,11 @@ const Layout = ({ children }: Readonly<{ children: ReactNode }>) => {
         // ? https://react.dev/reference/react-dom/client/hydrateRoot#suppressing-unavoidable-hydration-mismatch-errors
         <html suppressHydrationWarning lang='zh-TW' className='scroll-smooth'>
             <body className='antialiased'>
-                <ThemeProvider nonce='NmYxNTcyMDYtMTE1Ni00MjA1LTllM2ItMGU4MjUzYmEyMDhk' attribute='class'>
+                <ThemeProvider
+                    nonce='NmYxNTcyMDYtMTE1Ni00MjA1LTllM2ItMGU4MjUzYmEyMDhk'
+                    disableTransitionOnChange
+                    enableSystem
+                    attribute='class'>
                     {children}
                 </ThemeProvider>
                 <Analytics />

@@ -22,24 +22,26 @@ const FeatureSection = () => {
                     <div className='grid grid-cols-1 gap-8 lg:grid-cols-3 lg:gap-6'>
                         {[
                             {
-                                title: 'AI Automation: 自動化重複性任務 提升工作效率。',
+                                title: `AI Automation: \n自動化重複性任務 提升工作效率。`,
                                 desc: `讓 AI 成為您的最佳助手！ Lyle 提供 AI 自動化流程設計、AI 提示詞教學等服務，協助您將 AI 技術應用於日常工作中。無論是簡化重複性任務，還是提升工作效率，Lyle 都能為您提供客製化的 AI 解決方案。`
                             },
                             {
-                                title: '客製化開發: 根據您的需求 打造專屬的解決方案',
+                                title: '客製化開發: \n根據您的需求 打造專屬的解決方案',
                                 desc: `想讓您的業務更上一層樓嗎？ Lyle 提供專業的網頁開發、網站架設服務。無論您是小型企業或個人使用者，將您的想法轉化為現實，為您的客戶打造獨一無二的數位體驗。`
                             },
                             {
-                                title: 'AI 賦能: 運用 AI 技術 實現自動化與智慧化。',
+                                title: 'AI 賦能: \n運用 AI 技術 實現自動化與智慧化。',
                                 desc: `還在為繁瑣的工作煩惱嗎？ 為自己打造一個更智能的工作環境，無論您是需要一個全新的網站，還是想優化現有的工作流程，Lyle 都能滿足您的需求。`
                             }
                         ].map((feature, index) => (
-                            <div className='flex flex-col gap-5' key={`feature-section-${index}`}>
-                                <div className='bg-muted flex size-10 shrink-0 items-center justify-center rounded-md border shadow-xs'>
+                            <div className='mx-auto flex max-w-prose flex-col gap-5' key={`feature-section-${index}`}>
+                                <div className='bg-muted flex size-10 shrink-0 items-center justify-center rounded-md shadow-xs'>
                                     <Rocket className='text-primary size-5' />
                                 </div>
                                 <div className='flex flex-col gap-2'>
-                                    <h3 className='text-foreground font-semibold'>{feature.title}</h3>
+                                    <h3 className='text-foreground text-xl font-semibold text-pretty whitespace-pre-line'>
+                                        {feature.title}
+                                    </h3>
                                     <p className='text-muted-foreground'>{feature.desc}</p>
                                 </div>
                                 {/* <a

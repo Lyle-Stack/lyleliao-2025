@@ -11,6 +11,7 @@ const allowedOrigins = [
     'https://lyleliao.com',
     'https://fonts.gstatic.com',
     'https://fonts.googleapis.com',
+    '*.amazonaws.com',
     isProduction ? '' : 'http://localhost:3000'
 ];
 
@@ -58,7 +59,7 @@ export function middleware(request: NextRequest) {
     default-src 'self';
     script-src 'self' 'nonce-NmYxNTcyMDYtMTE1Ni00MjA1LTllM2ItMGU4MjUzYmEyMDhk' 'strict-dynamic' https: http: ${allowedOrigins.join(' ')} ${isProduction ? '' : `'unsafe-eval'`};
     style-src 'self' ${allowedOrigins.join(' ')} 'unsafe-inline';
-    img-src 'self' blob: data:;
+    img-src 'self' blob: data: ${allowedOrigins.join(' ')};
     font-src 'self' ${allowedOrigins.join(' ')};
     object-src 'none';
     base-uri 'self';

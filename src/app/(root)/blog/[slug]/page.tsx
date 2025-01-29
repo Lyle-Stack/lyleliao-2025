@@ -4,11 +4,13 @@ import { notFound } from 'next/navigation';
 import { BASE_URL } from '@/app/sitemap';
 import BlogArticleAside from '@/components/blog/BlogArticleAside';
 import BlogPostHeaderSection from '@/components/blog/BlogPostHeaderSection';
-import { CustomMDX } from '@/components/blog/mdx';
+import { AsideTagClassInjector, CustomMDX, TaskListClassInjector } from '@/components/blog/mdx';
 import SectionPadding from '@/components/share/SectionPadding';
+import { cn } from '@/lib/utils';
 
 import { getBlogPosts } from '../utils';
-import './post.css';
+
+// import './post.css';
 
 export async function generateStaticParams() {
     const posts = getBlogPosts();
@@ -82,7 +84,12 @@ export default async function Blog({ params }: Props) {
                     <article
                         className='border-border relative flex flex-row justify-center gap-12 border-x px-4'
                         aria-labelledby='article-title'>
-                        <main>
+                        <main
+                            className={cn(
+                                'text-foreground grid max-w-3xl grid-cols-1 px-8 text-lg',
+                                AsideTagClassInjector,
+                                TaskListClassInjector
+                            )}>
                             <CustomMDX source={post.content} />
                         </main>
                         <BlogArticleAside headers={post.headers} />
