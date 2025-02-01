@@ -80,4 +80,14 @@ function getBlogPosts() {
     return getMDXData(path.join(process.cwd(), 'assets', 'posts'));
 }
 
-export const allPosts = getBlogPosts();
+type RawBlogPost = ReturnType<typeof getBlogPosts>[number];
+
+export const allPosts = (
+    getBlogPosts().filter((blog) => blog.metadata) as (Omit<RawBlogPost, 'metadata'> & { metadata: Metadata })[]
+).sort((a, b) => {
+    if (new Date(a.metadata.publishedAt) > new Date(b.metadata.publishedAt)) {
+        return -1;
+    }
+
+    return 1;
+});

@@ -3,6 +3,8 @@ import { DESCRIPTION, NAME } from '../layout';
 import { BASE_URL } from '../sitemap';
 import RSS from 'rss';
 
+export const dynamic = 'force-static';
+
 export async function GET() {
     const feedOptions = {
         title: `${NAME} Blog Posts | RSS Feed`,
@@ -17,29 +19,18 @@ export async function GET() {
 
     const feed = new RSS(feedOptions);
 
-    allPosts
-        .filter((blog) => blog.metadata)
-        .sort((a, b) => {
-            if (new Date(a.metadata!.publishedAt) > new Date(b.metadata!.publishedAt)) {
-                return -1;
-            }
-
-            return 1;
-        })
-        .slice(0, 20)
-        .forEach((post) => {
-            feed.item({
-                title: post.metadata!.title,
-                description: post.metadata!.summary || '',
-                url: new URL(`/blog/${post.slug}`, BASE_URL).toString(),
-                // TODO: update this category within mdx file meta
-                categories: post.metadata!.genre.split(',').map((genre) => genre.trim()),
-                author: NAME,
-                date: post.metadata!.publishedAt,
-                lat: 24.1316156, //optional latitude field for GeoRSS
-                long: 120.6098393 //optional longitude field for GeoRSS
-            });
+    allPosts.slice(0, 10).forEach((post) => {
+        feed.item({
+            title: post.metadata.title,
+            description: post.metadata.summary || '',
+            url: new URL(`/blog/${post.slug}`, BASE_URL).toString(),
+            categories: post.metadata.genre.split(',').map((genre) => genre.trim()),
+            author: NAME,
+            date: post.metadata.publishedAt,
+            lat: 24.1316156, //optional latitude field for GeoRSS
+            long: 120.6098393 //optional longitude field for GeoRSS
         });
+    });
 
     return new Response(feed.xml({ indent: true }), {
         headers: {

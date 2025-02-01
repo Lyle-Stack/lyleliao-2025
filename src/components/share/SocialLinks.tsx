@@ -9,7 +9,7 @@ const SocialLinks = ({ className }: { className?: ClassNameValue }) => {
     return (
         <div
             className={cn(
-                'flex justify-center gap-4 md:gap-6 [&>*]:transition-transform [&>*]:duration-300 [&>*]:hover:scale-125',
+                'flex justify-center gap-4 md:gap-6 [&>*]:p-2.5 [&>*]:transition-transform [&>*]:duration-300 [&>*]:hover:scale-125 [&>*>svg]:size-5',
                 className
             )}
             aria-label='Social media links'>
