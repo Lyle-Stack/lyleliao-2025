@@ -12,8 +12,9 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import { BASE_URL } from './sitemap';
 
 export const NAME = 'Lyle 仲逸';
-const TITLE = 'Lyle | AI Automation & Website Builder';
-const DESCRIPTION =
+export const JOB_TITLE = 'Full Stack Developer & AI consultant';
+const TITLE = `${NAME} | ${JOB_TITLE}`;
+export const DESCRIPTION =
     '人人都該有的 AI 自動化時代, Lyle 網頁全端開發 x AI 驅動,創建你的數位未來,運用科技解鎖無限未來,幫助您實現夢想。';
 
 export const metadata: Metadata = {
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
     description: DESCRIPTION,
     authors: {
         name: NAME,
-        url: '/'
+        url: BASE_URL
     },
     keywords: [NAME, 'AI Automation', 'AI 自動化', 'Wesite Builder', '網頁開發'],
     referrer: 'origin-when-cross-origin',
@@ -49,7 +50,7 @@ export const metadata: Metadata = {
     alternates: {
         canonical: BASE_URL,
         types: {
-            'application/rss+xml': new URL('/rss', BASE_URL)
+            'application/rss+xml': new URL('/feed', BASE_URL)
         }
     },
     openGraph: {
@@ -70,6 +71,53 @@ export const metadata: Metadata = {
     formatDetection: { telephone: false, address: false, email: false }
 };
 
+const jsonLdPerson = {
+    '@context': 'http://www.schema.org',
+    '@type': 'person',
+    name: NAME,
+    jobTitle: JOB_TITLE,
+    height: '67 inches',
+    gender: 'male',
+    url: BASE_URL.toString(),
+    sameAs: [
+        'https://www.instagram.com/liaochungyid/',
+        'https://www.linkedin.com/in/lyleliao/',
+        'https://github.com/lyle-Stack/'
+    ],
+    image: new URL('/images/lyle-avatar.jpg', BASE_URL).toString(),
+    address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Taichung City',
+        addressRegion: 'Nantun District',
+        postalCode: '408',
+        addressCountry: 'Taiwan'
+    },
+    email: 'lyle@lyleliao.com',
+    birthDate: '1990-11-11',
+    birthPlace: 'Taichung City, Taiwan',
+    nationality: 'Taiwanese'
+};
+// Address	No. 17-32, Zhongyong Rd, Nantun District, Taichung City, Taiwan 408
+// Latitude	24.1316156
+// Longitude	120.6098393
+
+const jsonldWebsite = {
+    '@context': 'http://schema.org',
+    '@type': 'WebSite',
+    name: TITLE,
+    url: BASE_URL.toString(),
+    sameAs: [
+        'https://www.instagram.com/liaochungyid/',
+        'https://www.linkedin.com/in/lyleliao/',
+        'https://github.com/lyle-Stack/'
+    ]
+    // potentialAction: {
+    //     '@type': 'SearchAction',
+    //     target: 'http://example.com/pages/search_results?q={search_term}',
+    //     'query-input': 'required name=search_term'
+    // }
+};
+
 const Layout = ({ children }: Readonly<{ children: ReactNode }>) => {
     // const nonce = (await headers()).get('x-nonce')
 
@@ -87,6 +135,11 @@ const Layout = ({ children }: Readonly<{ children: ReactNode }>) => {
                 </ThemeProvider>
                 <Analytics />
                 <SpeedInsights />
+                <script type='application/ld+json' dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdPerson) }} />
+                <script
+                    type='application/ld+json'
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonldWebsite) }}
+                />
             </body>
         </html>
     );

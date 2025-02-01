@@ -11,7 +11,6 @@ const allowedOrigins = [
     'https://lyleliao.com',
     'https://fonts.gstatic.com',
     'https://fonts.googleapis.com',
-    '*.amazonaws.com',
     isProduction ? '' : 'http://localhost:3000'
 ];
 
@@ -59,7 +58,7 @@ export function middleware(request: NextRequest) {
     default-src 'self';
     script-src 'self' 'nonce-NmYxNTcyMDYtMTE1Ni00MjA1LTllM2ItMGU4MjUzYmEyMDhk' 'strict-dynamic' https: http: ${allowedOrigins.join(' ')} ${isProduction ? '' : `'unsafe-eval'`};
     style-src 'self' ${allowedOrigins.join(' ')} 'unsafe-inline';
-    img-src 'self' blob: data: ${allowedOrigins.join(' ')};
+    img-src 'self' blob: data: https://s3.ap-southeast-2.amazonaws.com ${allowedOrigins.join(' ')};
     font-src 'self' ${allowedOrigins.join(' ')};
     object-src 'none';
     base-uri 'self';
@@ -106,7 +105,7 @@ export const config = {
          * - customized OG images and RSS routes
          */
         {
-            source: '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|og|rss).*)',
+            source: '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|og|feed).*)',
             missing: [
                 { type: 'header', key: 'next-router-prefetch' },
                 { type: 'header', key: 'purpose', value: 'prefetch' }
@@ -114,7 +113,7 @@ export const config = {
         },
 
         {
-            source: '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|og|rss).*)',
+            source: '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|og|feed).*)',
             has: [
                 { type: 'header', key: 'next-router-prefetch' },
                 { type: 'header', key: 'purpose', value: 'prefetch' }
@@ -122,7 +121,7 @@ export const config = {
         },
 
         {
-            source: '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|og|rss).*)',
+            source: '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|og|feed).*)',
             has: [{ type: 'header', key: 'x-present' }],
             missing: [{ type: 'header', key: 'x-missing', value: 'prefetch' }]
         }

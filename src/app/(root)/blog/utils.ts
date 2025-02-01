@@ -4,8 +4,12 @@ import path from 'path';
 
 export type Metadata = {
     title: string;
+    createdAt: string;
     publishedAt: string;
+    updatedAt: string;
     summary: string;
+    keywords: string;
+    genre: string;
     image?: string;
 };
 
@@ -72,6 +76,8 @@ function getMDXData(dir: string) {
     });
 }
 
-export function getBlogPosts() {
+function getBlogPosts() {
     return getMDXData(path.join(process.cwd(), 'assets', 'posts'));
 }
+
+export const allPosts = getBlogPosts();

@@ -1,5 +1,3 @@
-import { Fragment } from 'react';
-
 import Link from 'next/link';
 
 import { cn } from '@/lib/utils';
@@ -7,7 +5,6 @@ import { cn } from '@/lib/utils';
 import BlogHeaderSection from '../blog/BlogHeaderSection';
 import SectionPadding from '../share/SectionPadding';
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from '../ui/card';
-import { Separator } from '../ui/separator';
 
 const BlogSection = () => {
     return (
@@ -16,7 +13,7 @@ const BlogSection = () => {
                 <div className='mx-auto px-3'>
                     <div className='flex flex-col items-start gap-12'>
                         <BlogHeaderSection />
-                        <div className='grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-3' role='list'>
+                        <div className='grid grid-cols-1 lg:grid-cols-3' role='list'>
                             {[
                                 {
                                     time: 'Aug 17, 2024',
@@ -49,11 +46,10 @@ const BlogSection = () => {
                                     desc: 'Comming soon'
                                 }
                             ].map((item, index) => (
-                                <Link
-                                    href={item.href}
+                                <Card
                                     key={`blog-list-${index}`}
-                                    className='group/card mx-auto w-[min(65ch,100%)]'>
-                                    <Card className='flex flex-col justify-start gap-2 py-3 lg:h-full lg:px-3'>
+                                    className='flex flex-col justify-start gap-2 lg:h-full'>
+                                    <Link href={item.href} className='group/card'>
                                         <CardHeader className={cn('cursor-pointer', !item.href && 'cursor-default')}>
                                             <p>
                                                 {item.time} · {item.cat}
@@ -76,8 +72,8 @@ const BlogSection = () => {
                                                 <p className='text-muted-foreground'>{item.role}</p>
                                             </div>
                                         </CardFooter>
-                                    </Card>
-                                </Link>
+                                    </Link>
+                                </Card>
                             ))}
                         </div>
                     </div>

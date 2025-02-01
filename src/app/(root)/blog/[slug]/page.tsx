@@ -1,6 +1,7 @@
 import type { Metadata, ResolvingMetadata } from 'next';
 import { notFound } from 'next/navigation';
 
+import { NAME } from '@/app/layout';
 import { BASE_URL } from '@/app/sitemap';
 import BlogArticleAside from '@/components/blog/BlogArticleAside';
 import BlogPostHeaderSection from '@/components/blog/BlogPostHeaderSection';
@@ -8,26 +9,22 @@ import { AsideTagClassInjector, CustomMDX, TaskListClassInjector } from '@/compo
 import SectionPadding from '@/components/share/SectionPadding';
 import { cn } from '@/lib/utils';
 
-import { getBlogPosts } from '../utils';
-
-// import './post.css';
+import { JSON_LD_MYSELF } from '../../page';
+import { allPosts } from '../utils';
 
 export async function generateStaticParams() {
-    const posts = getBlogPosts();
-
-    return posts.map((post) => ({
+    return allPosts.map((post) => ({
         slug: post.slug
     }));
 }
 
 type Props = {
     params: Promise<{ slug: string }>;
-    //     searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
 export async function generateMetadata({ params }: Props, _parent: ResolvingMetadata): Promise<Metadata> {
     const { slug } = await params;
-    const post = getBlogPosts().find((post) => post.slug === slug);
+    const post = allPosts.find((post) => post.slug === slug);
 
     if (!post) {
         notFound();
@@ -70,7 +67,7 @@ export async function generateMetadata({ params }: Props, _parent: ResolvingMeta
 
 export default async function Blog({ params }: Props) {
     const { slug } = await params;
-    const post = getBlogPosts().find((post) => post.slug === slug);
+    const post = allPosts.find((post) => post.slug === slug);
 
     if (!post) {
         notFound();
@@ -102,20 +99,48 @@ export default async function Blog({ params }: Props) {
                         suppressHydrationWarning
                         dangerouslySetInnerHTML={{
                             __html: JSON.stringify({
-                                '@context': 'https://schema.org',
+                                '@context': 'http://schema.org',
                                 '@type': 'BlogPosting',
+                                image: new URL(
+                                    post.metadata.image
+                                        ? post.metadata.image
+                                        : `/og?tag=&title=${encodeURIComponent(post.metadata.title)}&desc=${encodeURIComponent(post.metadata.summary)}&ni=t&tr=t`,
+                                    BASE_URL
+                                ).toString(),
+                                url: new URL(`/blog/${post.slug}`, BASE_URL).toString(),
                                 headline: post.metadata.title,
-                                datePublished: post.metadata.publishedAt,
-                                dateModified: post.metadata.publishedAt,
                                 description: post.metadata.summary,
-                                image: post.metadata.image
-                                    ? `${BASE_URL}${post.metadata.image}`
-                                    : `${BASE_URL}/og?tag=&title=${encodeURIComponent(post.metadata.title)}&desc=${encodeURIComponent(post.metadata.summary)}&ni=t&tr=t`,
-                                url: `${BASE_URL}/blog/${post.slug}`,
-                                author: {
-                                    '@type': 'Person',
-                                    name: 'Lyle 仲逸'
-                                }
+                                dateCreated: Number.isNaN(Date.parse(post.metadata.createdAt))
+                                    ? ''
+                                    : new Date(post.metadata.createdAt).toISOString(),
+                                datePublished: Number.isNaN(Date.parse(post.metadata.publishedAt))
+                                    ? ''
+                                    : new Date(post.metadata.publishedAt).toISOString(),
+                                dateModified: Number.isNaN(Date.parse(post.metadata.updatedAt))
+                                    ? ''
+                                    : new Date(post.metadata.updatedAt).toISOString(),
+                                inLanguage: 'zh-TW',
+                                isFamilyFriendly: true,
+                                copyrightYear: `${new Date().getFullYear()}`,
+                                copyrightHolder: NAME,
+                                contentLocation: {
+                                    '@type': 'Place',
+                                    name: 'Taipei City, Taiwan'
+                                },
+                                accountablePerson: JSON_LD_MYSELF,
+                                author: JSON_LD_MYSELF,
+                                creator: JSON_LD_MYSELF,
+                                publisher: JSON_LD_MYSELF,
+                                mainEntityOfPage: {
+                                    '@type': 'WebPage',
+                                    '@id': new URL(`/blog/${post.slug}`, BASE_URL).toString()
+                                },
+                                keywords: post.metadata.keywords.split(',').map((keyword) => keyword.trim()),
+                                genre: post.metadata.genre.split(',').map((genre) => genre.trim()),
+                                articleSection: post.headers
+                                    .filter((header) => header.level === 1)
+                                    .map((header) => header.content),
+                                articleBody: post.content
                             })
                         }}
                     />

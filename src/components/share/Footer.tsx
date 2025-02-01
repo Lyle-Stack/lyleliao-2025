@@ -7,13 +7,13 @@ const Footer = () => {
     return (
         <SectionPadding>
             <footer className='bg-background w-full py-16 lg:py-24' role='contentinfo' aria-label='Site footer'>
-                <div className='mx-auto flex flex-col gap-12 px-3 lg:gap-16'>
-                    <div className='relative flex flex-col items-center gap-12 md:items-center md:justify-between lg:flex-row lg:gap-8'>
+                <div className='mx-auto flex flex-col gap-12 px-3 md:gap-16'>
+                    <div className='relative flex flex-col items-center gap-12 md:flex-row md:items-center md:justify-between md:gap-8'>
                         <a href='/'>
                             <LLLogo />
                         </a>
                         <nav
-                            className='[&>*]:text-muted-foreground hover:[&>*]:text-foreground flex flex-col items-center gap-6 md:gap-8 lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:flex-row [&>*]:transition-colors'
+                            className='[&>*]:text-muted-foreground hover:[&>*]:text-foreground flex flex-col items-center gap-6 md:absolute md:left-1/2 md:-translate-x-1/2 md:flex-row md:gap-8 [&>*]:transition-colors'
                             aria-label='Footer navigation'>
                             <a href='/'>Home</a>
                             <a href='/blog'>Blog</a>
@@ -21,7 +21,7 @@ const Footer = () => {
                         <SocialLinks />
                     </div>
                     <Separator />
-                    <div className='flex flex-col items-center justify-between gap-12 text-center md:gap-6 lg:flex-row lg:text-left'>
+                    <div className='flex flex-col items-center justify-between gap-12 text-center md:flex-row md:gap-6 md:text-left'>
                         <p className='text-muted-foreground order-2 md:order-1'>
                             <span>Copyright © 2025</span>{' '}
                             <a href='/' className='hover:underline'>
