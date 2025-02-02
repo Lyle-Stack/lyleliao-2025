@@ -1,4 +1,4 @@
-import { allPosts } from '../(root)/blog/utils';
+import { livePosts } from '../(root)/blog/utils';
 import { DESCRIPTION, NAME } from '../layout';
 import { BASE_URL } from '../sitemap';
 import RSS from 'rss';
@@ -19,7 +19,7 @@ export async function GET() {
 
     const feed = new RSS(feedOptions);
 
-    allPosts.slice(0, 10).forEach((post) => {
+    livePosts.slice(0, 10).forEach((post) => {
         feed.item({
             title: post.metadata.title,
             description: post.metadata.summary || '',

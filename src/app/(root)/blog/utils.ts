@@ -1,17 +1,28 @@
 import fs from 'fs';
 import { slug } from 'github-slugger';
 import path from 'path';
+import { z } from 'zod';
 
-export type Metadata = {
-    title: string;
-    createdAt: string;
-    publishedAt: string;
-    updatedAt: string;
-    summary: string;
-    keywords: string;
-    genre: string;
-    image?: string;
-};
+// ! only use 個人觀點 or AI 自動化 & Agent with archived in genre
+const metadataRawSchema = z.object({
+    title: z.string(),
+    createdAt: z.string(),
+    publishedAt: z.string(),
+    updatedAt: z.string(),
+    summary: z.string(),
+    keywords: z.string(),
+    genre: z.string().regex(/^(?:個人觀點|AI 自動化 & Agent)(?:, ?archived)?$/gm),
+    image: z.string().optional()
+});
+
+const metadataTransformedSchema = metadataRawSchema.extend({
+    genre: z
+        .string()
+        .regex(/^(?:個人觀點|AI 自動化 & Agent)(?:, ?archived)?$/gm)
+        .transform((value) => value.split(',').map((genre) => genre.trim()))
+});
+
+type MetadataRaw = z.infer<typeof metadataRawSchema>;
 
 export const HEADER_SLUG_PREFIX = 'anchor-';
 
@@ -31,23 +42,22 @@ function parseFrontmatter(fileContent: string) {
     const match = frontmatterRegex.exec(fileContent);
     const frontMatterBlock = match?.[1];
     if (!frontMatterBlock) {
-        return {
-            content,
-            headers
-        };
+        throw new Error('No frontmatter found');
     }
 
     const frontMatterLines = frontMatterBlock.trim().split('\n');
-    const metadata: Partial<Metadata> = {};
+    const metadataRaw: Partial<MetadataRaw> = {};
 
     frontMatterLines.forEach((line) => {
         const [key, ...valueArr] = line.split(': ');
         let value = valueArr.join(': ').trim();
         value = value.replace(/^['"](.*)['"]$/, '$1'); // Remove quotes
-        metadata[key.trim() as keyof Metadata] = value;
+        metadataRaw[key.trim() as keyof MetadataRaw] = value;
     });
 
-    return { metadata: metadata as Metadata, content, headers };
+    const metadata = metadataTransformedSchema.parse(metadataRaw);
+
+    return { metadata, content, headers };
 }
 
 function getMDXFiles(dir: string) {
@@ -80,14 +90,24 @@ function getBlogPosts() {
     return getMDXData(path.join(process.cwd(), 'assets', 'posts'));
 }
 
-type RawBlogPost = ReturnType<typeof getBlogPosts>[number];
-
-export const allPosts = (
-    getBlogPosts().filter((blog) => blog.metadata) as (Omit<RawBlogPost, 'metadata'> & { metadata: Metadata })[]
-).sort((a, b) => {
+const allPosts = getBlogPosts().sort((a, b) => {
     if (new Date(a.metadata.publishedAt) > new Date(b.metadata.publishedAt)) {
         return -1;
     }
 
     return 1;
 });
+
+export const allCategories = Array.from(new Set(allPosts.map((post) => post.metadata.genre).flat()));
+
+export const livePosts = allPosts
+    .filter((post) => !post.metadata.genre.includes('archived'))
+    .map((post) => ({ ...post, metadata: { ...post.metadata, genre: post.metadata.genre[0] } }));
+export const povPosts = livePosts.filter((post) => post.metadata.genre.includes('個人觀點'));
+export const aiPosts = livePosts.filter((post) => post.metadata.genre.includes('AI 自動化 & Agent'));
+
+export const archivedPosts = allPosts
+    .filter((post) => post.metadata.genre.includes('archived'))
+    .map((post) => ({ ...post, metadata: { ...post.metadata, genre: post.metadata.genre[0] } }));
+
+export type Metadata = (typeof livePosts)[number]['metadata'];

@@ -84,7 +84,7 @@ const jsonLdPerson = {
         'https://www.linkedin.com/in/lyleliao/',
         'https://github.com/lyle-Stack/'
     ],
-    image: new URL('/images/lyle-avatar.jpg', BASE_URL).toString(),
+    image: 'https://s3.ap-southeast-2.amazonaws.com/lyleliao.com/public/lyle-avatar.jpg',
     address: {
         '@type': 'PostalAddress',
         addressLocality: 'Taichung City',

@@ -1,13 +1,13 @@
 import Link from 'next/link';
 
-import { allPosts } from '@/app/(root)/blog/utils';
+import { livePosts } from '@/app/(root)/blog/utils';
 import { cn } from '@/lib/utils';
 
 import { CardWithInnerLink, PureCard } from '../share/CustomizedCard';
 import SectionPadding from '../share/SectionPadding';
 import { AspectRatio } from '../ui/aspect-ratio';
 
-type Post = (typeof allPosts)[number];
+type Post = (typeof livePosts)[number];
 
 type Porps = {
     highlightPost?: Post;
@@ -40,14 +40,17 @@ const BlogCardLinkWithImage = ({
                 href='true' // for link hover effect
                 title={post.metadata.title}
                 desc={post.metadata.summary}
-                imgSrc='/images/lyle-avatar.jpg'
+                imgSrc='https://s3.ap-southeast-2.amazonaws.com/lyleliao.com/public/lyle-avatar.jpg'
                 author='Lyle 仲逸'
                 role='AI Automation x Website Builder'
             />
             <div className={cn('mx-auto w-[min(calc(65ch+3rem),100%)] flex-1 px-6 lg:my-auto lg:px-0', imgClassName)}>
                 <AspectRatio ratio={ratio}>
                     <img
-                        src={post.metadata.image ?? '/images/lyle-og.png'}
+                        src={
+                            post.metadata.image ??
+                            `/og?tag=${post.metadata.genre === '個人觀點' ? 'POV' : 'AIAA'},${post.metadata.keywords}&title=${encodeURIComponent(post.metadata.title)}&desc=${encodeURIComponent(post.metadata.summary)}&ni=t&tr=t`
+                        }
                         alt={post.metadata.title}
                         className='size-full rounded-md object-cover'
                     />
@@ -91,7 +94,7 @@ const BlogListPostsSection = ({ highlightPost, secondRowPosts, restPosts }: Porp
                                         href={`/blog/${post.slug}`}
                                         title={post.metadata.title}
                                         desc={post.metadata.summary}
-                                        imgSrc='/images/lyle-avatar.jpg'
+                                        imgSrc='https://s3.ap-southeast-2.amazonaws.com/lyleliao.com/public/lyle-avatar.jpg'
                                         author='Lyle 仲逸'
                                         role='AI Automation x Website Builder'
                                     />

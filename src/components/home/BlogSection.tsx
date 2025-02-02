@@ -16,7 +16,7 @@ const BlogSection = () => {
                                     cat: 'Point of View',
                                     title: 'Strategize Your Life，策畫你的人生，一篇 HBR (哈佛商業評論)文章',
                                     author: 'Lyle 仲逸',
-                                    imgSrc: '/images/lyle-avatar.jpg',
+                                    imgSrc: 'https://s3.ap-southeast-2.amazonaws.com/lyleliao.com/public/lyle-avatar.jpg',
                                     href: '/blog/strategize-my-life',
                                     role: 'AI Automation x Website Builder',
                                     desc: '花費許多時間，很難找到有滿意的。更多是推銷書籍與課程的內容。我對這些廣告並不反感，因為真的需要一探究竟。令人困惑的是，他的餅畫得太美，簡直是「買必勝」的承諾。仔細看看，也確實他們可以做麼說，因為他們給了一堆指引，一堆要改變，一堆要立即執行的事情。'

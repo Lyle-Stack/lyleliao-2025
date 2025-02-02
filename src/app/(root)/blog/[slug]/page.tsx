@@ -10,10 +10,10 @@ import SectionPadding from '@/components/share/SectionPadding';
 import { cn } from '@/lib/utils';
 
 import { JSON_LD_MYSELF } from '../../page';
-import { allPosts } from '../utils';
+import { livePosts } from '../utils';
 
 export async function generateStaticParams() {
-    return allPosts.map((post) => ({
+    return livePosts.map((post) => ({
         slug: post.slug
     }));
 }
@@ -24,7 +24,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props, _parent: ResolvingMetadata): Promise<Metadata> {
     const { slug } = await params;
-    const post = allPosts.find((post) => post.slug === slug);
+    const post = livePosts.find((post) => post.slug === slug);
 
     if (!post) {
         notFound();
@@ -67,7 +67,7 @@ export async function generateMetadata({ params }: Props, _parent: ResolvingMeta
 
 export default async function Blog({ params }: Props) {
     const { slug } = await params;
-    const post = allPosts.find((post) => post.slug === slug);
+    const post = livePosts.find((post) => post.slug === slug);
 
     if (!post) {
         notFound();

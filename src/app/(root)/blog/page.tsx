@@ -5,7 +5,7 @@ import BlogListHeaderSection from '@/components/blog/BlogListHeaderSection';
 import BlogListPostsSection from '@/components/blog/BlogListPostsSection';
 
 import { JSON_LD_MYSELF } from '../page';
-import { allPosts } from './utils';
+import { livePosts } from './utils';
 
 const TITLE = 'Blog x AI x Life';
 
@@ -22,13 +22,8 @@ const jsonlfWebpage = {
     publisher: JSON_LD_MYSELF
 };
 
-// const [highlightPost, secondRowPostOne, secondRowPostTwo] = allPosts;
-// const restPosts = allPosts.slice(3, 10);
-
-const [highlightPost] = allPosts;
-const secondRowPostOne = highlightPost;
-const secondRowPostTwo = highlightPost;
-const restPosts = [highlightPost, highlightPost, highlightPost, highlightPost, highlightPost, highlightPost];
+const [highlightPost, secondRowPostOne, secondRowPostTwo] = livePosts;
+const restPosts = livePosts.slice(3, 10);
 
 const BlogPage = () => {
     return (

@@ -15,7 +15,11 @@ const BlogPostHeaderSection = ({ metadata }: Readonly<{ metadata: Metadata }>) =
                 </div>
                 <div className='flex items-center gap-4'>
                     <span className='size-10 shrink-0 grow-0 overflow-hidden rounded-full'>
-                        <img className='size-full object-cover' alt='Lyle' src='/images/lyle-avatar.jpg' />
+                        <img
+                            className='size-full object-cover'
+                            alt='Lyle'
+                            src='https://s3.ap-southeast-2.amazonaws.com/lyleliao.com/public/lyle-avatar.jpg'
+                        />
                     </span>
                     <div className='text-sm'>
                         <p className='text-foreground font-medium'>Lyle 仲逸</p>
@@ -26,7 +30,9 @@ const BlogPostHeaderSection = ({ metadata }: Readonly<{ metadata: Metadata }>) =
             <div className='h-full flex-1'>
                 <AspectRatio ratio={1.6}>
                     <img
-                        src={metadata.image ?? '/images/lyle-og.png'}
+                        src={
+                            metadata.image ?? 'https://s3.ap-southeast-2.amazonaws.com/lyleliao.com/public/lyle-og.png'
+                        }
                         alt={metadata.title}
                         className='size-full rounded-md object-cover'
                     />

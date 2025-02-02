@@ -23,11 +23,7 @@ const Footer = () => {
                     <Separator />
                     <div className='flex flex-col items-center justify-between gap-12 text-center md:flex-row md:gap-6 md:text-left'>
                         <p className='text-muted-foreground order-2 md:order-1'>
-                            <span>Copyright © 2025</span>{' '}
-                            <a href='/' className='hover:underline'>
-                                lyleliao.com
-                            </a>
-                            . All rights reserved.
+                            <span>Copyright © {new Date().getFullYear()}</span> lyleliao.com. All rights reserved.
                         </p>
                         <p className='text-muted-foreground order-1 md:order-2'>Built by 廖仲逸 Lyle Liao</p>
                         {/* <nav
