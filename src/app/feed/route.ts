@@ -1,5 +1,6 @@
+import { DESCRIPTION, NAME } from '@/constant/jsonld-and-meta';
+
 import { livePosts } from '../(root)/blog/utils';
-import { DESCRIPTION, NAME } from '../layout';
 import { BASE_URL } from '../sitemap';
 import RSS from 'rss';
 
