@@ -10,8 +10,8 @@ export async function GET() {
         title: `${NAME} Blog Posts | RSS Feed`,
         description: DESCRIPTION,
         site_url: BASE_URL.toString(),
-        feed_url: `${BASE_URL}/feed`,
-        image_url: `${BASE_URL}/lyle-og.png`,
+        feed_url: new URL('/feed', BASE_URL).toString(),
+        image_url: 'https://s3.ap-southeast-2.amazonaws.com/lyleliao.com/public/lyle-og.png',
         pubDate: new Date(),
         language: 'zh-TW',
         copyright: `All rights reserved ${new Date().getFullYear()}`
@@ -23,8 +23,8 @@ export async function GET() {
         feed.item({
             title: post.metadata.title,
             description: post.metadata.summary || '',
-            url: new URL(`/blog/${post.slug}`, BASE_URL).toString(),
-            categories: post.metadata.genre.split(',').map((genre) => genre.trim()),
+            url: new URL(post.href, BASE_URL).toString(),
+            categories: [post.metadata.genre],
             author: NAME,
             date: post.metadata.publishedAt,
             lat: 24.1316156, //optional latitude field for GeoRSS

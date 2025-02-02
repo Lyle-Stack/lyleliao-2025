@@ -30,12 +30,12 @@ const BlogCardLinkWithImage = ({
 }) => {
     return (
         <Link
-            href={`/blog/${post.slug}`}
+            href={post.href}
             role='list'
             className={cn('group/card flex flex-col flex-nowrap lg:flex-row lg:items-center', className)}>
             <PureCard
                 className={cn('flex-1 pb-4 lg:h-full lg:pb-6', cardClassName)}
-                time={post.metadata.publishedAt}
+                time={post.metadata.formattedPublishedAt}
                 cat={post.metadata.genre}
                 href='true' // for link hover effect
                 title={post.metadata.title}
@@ -75,23 +75,25 @@ const BlogListPostsSection = ({ highlightPost, secondRowPosts, restPosts }: Porp
                         )}
                         <div className='-mb-12 grid grid-cols-1 lg:mb-auto lg:grid-cols-2'>
                             {secondRowPosts &&
-                                secondRowPosts.map((post, index) => (
-                                    <BlogCardLinkWithImage
-                                        post={post}
-                                        key={`second-row-post-${index}-${post.slug}`}
-                                        cardClassName='border-b lg:border-b-0 lg:pr-2'
-                                        imgClassName='hidden lg:block'
-                                    />
-                                ))}
+                                secondRowPosts
+                                    .filter(Boolean)
+                                    .map((post, index) => (
+                                        <BlogCardLinkWithImage
+                                            post={post}
+                                            key={`second-row-post-${index}-${post.slug}`}
+                                            cardClassName='border-b lg:border-b-0 lg:pr-2'
+                                            imgClassName='hidden lg:block'
+                                        />
+                                    ))}
                         </div>
                         <div className='grid grid-cols-1 lg:grid-cols-3 lg:gap-y-8'>
                             {restPosts &&
                                 restPosts.map((post, index) => (
                                     <CardWithInnerLink
                                         key={`rest-blog-list-${index}-${post.slug}`}
-                                        time={post.metadata.publishedAt}
+                                        time={post.metadata.formattedPublishedAt}
                                         cat={post.metadata.genre}
-                                        href={`/blog/${post.slug}`}
+                                        href={post.href}
                                         title={post.metadata.title}
                                         desc={post.metadata.summary}
                                         imgSrc='https://s3.ap-southeast-2.amazonaws.com/lyleliao.com/public/lyle-avatar.jpg'

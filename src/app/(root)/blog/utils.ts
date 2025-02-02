@@ -1,28 +1,44 @@
+import { genreMap } from './utils-genre';
 import fs from 'fs';
 import { slug } from 'github-slugger';
 import path from 'path';
 import { z } from 'zod';
 
+const isoStringSchema = z.string().regex(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/);
+
+function formatDate(isoString: string) {
+    const date = new Date(isoString);
+
+    return date.toLocaleDateString('en-US', {
+        month: 'short', // Short month name (e.g., Jan)
+        day: '2-digit', // Two-digit day of the month (e.g., 01, 15)
+        year: 'numeric' // Four-digit year (e.g., 2025)
+    });
+}
+
 // ! only use 個人觀點 or AI 自動化 & Agent with archived in genre
-const metadataRawSchema = z.object({
+const PostRawMetadataSchema = z.object({
     title: z.string(),
-    createdAt: z.string(),
-    publishedAt: z.string(),
-    updatedAt: z.string(),
+    createdAt: isoStringSchema,
+    publishedAt: isoStringSchema,
+    updatedAt: isoStringSchema,
     summary: z.string(),
     keywords: z.string(),
     genre: z.string().regex(/^(?:個人觀點|AI 自動化 & Agent)(?:, ?archived)?$/gm),
     image: z.string().optional()
 });
 
-const metadataTransformedSchema = metadataRawSchema.extend({
+const PostTransformedMetadataSchema = PostRawMetadataSchema.extend({
     genre: z
         .string()
         .regex(/^(?:個人觀點|AI 自動化 & Agent)(?:, ?archived)?$/gm)
-        .transform((value) => value.split(',').map((genre) => genre.trim()))
+        .transform((value) => value.split(',').map((genre) => genre.trim())),
+    formattedCreatedAt: z.string().transform(formatDate),
+    formattedPublishedAt: z.string().transform(formatDate),
+    formattedUpdatedAt: z.string().transform(formatDate)
 });
 
-type MetadataRaw = z.infer<typeof metadataRawSchema>;
+type PostRawMetadata = z.infer<typeof PostRawMetadataSchema>;
 
 export const HEADER_SLUG_PREFIX = 'anchor-';
 
@@ -46,16 +62,21 @@ function parseFrontmatter(fileContent: string) {
     }
 
     const frontMatterLines = frontMatterBlock.trim().split('\n');
-    const metadataRaw: Partial<MetadataRaw> = {};
+    const metadataRaw: Partial<PostRawMetadata> = {};
 
     frontMatterLines.forEach((line) => {
         const [key, ...valueArr] = line.split(': ');
         let value = valueArr.join(': ').trim();
         value = value.replace(/^['"](.*)['"]$/, '$1'); // Remove quotes
-        metadataRaw[key.trim() as keyof MetadataRaw] = value;
+        metadataRaw[key.trim() as keyof PostRawMetadata] = value;
     });
 
-    const metadata = metadataTransformedSchema.parse(metadataRaw);
+    const metadata = PostTransformedMetadataSchema.parse({
+        ...metadataRaw,
+        formattedCreatedAt: metadataRaw.createdAt,
+        formattedPublishedAt: metadataRaw.publishedAt,
+        formattedUpdatedAt: metadataRaw.updatedAt
+    });
 
     return { metadata, content, headers };
 }
@@ -80,6 +101,7 @@ function getMDXData(dir: string) {
         return {
             metadata,
             slug,
+            href: `/blog/${genreMap[metadata.genre[0] as keyof typeof genreMap]}/${slug}`,
             content,
             headers
         };
@@ -98,8 +120,6 @@ const allPosts = getBlogPosts().sort((a, b) => {
     return 1;
 });
 
-export const allCategories = Array.from(new Set(allPosts.map((post) => post.metadata.genre).flat()));
-
 export const livePosts = allPosts
     .filter((post) => !post.metadata.genre.includes('archived'))
     .map((post) => ({ ...post, metadata: { ...post.metadata, genre: post.metadata.genre[0] } }));
@@ -110,4 +130,4 @@ export const archivedPosts = allPosts
     .filter((post) => post.metadata.genre.includes('archived'))
     .map((post) => ({ ...post, metadata: { ...post.metadata, genre: post.metadata.genre[0] } }));
 
-export type Metadata = (typeof livePosts)[number]['metadata'];
+export type PostMetadata = (typeof livePosts)[number]['metadata'];

@@ -7,7 +7,7 @@ import Link from 'next/link';
 import LLLogo from '@/components/icon/LLLogo';
 import SectionPadding from '@/components/share/SectionPadding';
 import ThemeSwitch from '@/components/share/ThemeSwitch';
-import { Button, buttonVariants } from '@/components/ui/button';
+import { buttonVariants } from '@/components/ui/button';
 import { NAVIGATION_LINKS } from '@/constant/navigation';
 
 import {
@@ -80,6 +80,7 @@ const NavigationBar = () => {
                             <LLLogo />
                         </Link>
                         <div className='flex flex-row flex-nowrap items-center gap-2'>
+                            {/* desktop menu */}
                             <div className='hidden flex-row flex-nowrap items-center gap-2 pr-2 md:flex'>
                                 {NAVIGATION_LINKS.map((link) => (
                                     <Link
@@ -92,6 +93,8 @@ const NavigationBar = () => {
                                 ))}
                             </div>
                             <ThemeSwitch />
+
+                            {/* mobile menu */}
                             <Sheet>
                                 <SheetTrigger
                                     className={buttonVariants({

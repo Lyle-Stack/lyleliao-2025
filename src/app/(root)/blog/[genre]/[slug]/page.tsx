@@ -1,5 +1,5 @@
-import type { Metadata, ResolvingMetadata } from 'next';
-import { notFound } from 'next/navigation';
+import type { Metadata } from 'next';
+import { RedirectType, notFound, permanentRedirect } from 'next/navigation';
 
 import { NAME } from '@/app/layout';
 import { BASE_URL } from '@/app/sitemap';
@@ -9,8 +9,9 @@ import { AsideTagClassInjector, CustomMDX, TaskListClassInjector } from '@/compo
 import SectionPadding from '@/components/share/SectionPadding';
 import { cn } from '@/lib/utils';
 
-import { JSON_LD_MYSELF } from '../../page';
-import { livePosts } from '../utils';
+import { JSON_LD_MYSELF } from '../../../page';
+import { livePosts } from '../../utils';
+import { allGenreSlug, genreReverseMap } from '../../utils-genre';
 
 export async function generateStaticParams() {
     return livePosts.map((post) => ({
@@ -19,10 +20,10 @@ export async function generateStaticParams() {
 }
 
 type Props = {
-    params: Promise<{ slug: string }>;
+    params: Promise<{ genre: (typeof allGenreSlug)[number]; slug: string }>;
 };
 
-export async function generateMetadata({ params }: Props, _parent: ResolvingMetadata): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { slug } = await params;
     const post = livePosts.find((post) => post.slug === slug);
 
@@ -30,16 +31,11 @@ export async function generateMetadata({ params }: Props, _parent: ResolvingMeta
         notFound();
     }
 
-    const metadata = post.metadata;
+    const { title, publishedAt: publishedTime, summary: description, image } = post.metadata;
 
-    if (!metadata) {
-        return {};
-    }
-
-    const { title, publishedAt: publishedTime, summary: description, image } = metadata;
-    const ogImage = image
-        ? image
-        : `${BASE_URL}/og?tag=&title=${encodeURIComponent(metadata.title)}&desc=${encodeURIComponent(metadata.summary)}&ni=t&tr=t`;
+    const ogImage =
+        image ??
+        `${BASE_URL}/og?tag=&title=${encodeURIComponent(title)}&desc=${encodeURIComponent(description)}&ni=t&tr=t`;
 
     return {
         title,
@@ -49,10 +45,12 @@ export async function generateMetadata({ params }: Props, _parent: ResolvingMeta
             description,
             type: 'article',
             publishedTime,
-            url: `${BASE_URL}/blog/${post.slug}`,
+            url: new URL(post.href, BASE_URL).toString(),
             images: [
                 {
-                    url: ogImage
+                    url: ogImage,
+                    width: 1200,
+                    height: 630
                 }
             ]
         },
@@ -66,18 +64,22 @@ export async function generateMetadata({ params }: Props, _parent: ResolvingMeta
 }
 
 export default async function Blog({ params }: Props) {
-    const { slug } = await params;
+    const { slug, genre: propGenre } = await params;
     const post = livePosts.find((post) => post.slug === slug);
 
     if (!post) {
         notFound();
     }
 
+    if (post.metadata.genre !== genreReverseMap[propGenre]) {
+        permanentRedirect(post.href, RedirectType.replace);
+    }
+
     return (
         <SectionPadding>
             <section>
                 <div className='blog mx-auto px-3'>
-                    {post.metadata && <BlogPostHeaderSection metadata={post.metadata} />}
+                    <BlogPostHeaderSection metadata={post.metadata} />
                     <article
                         className='border-border relative flex flex-row justify-center gap-12 border-x px-4'
                         aria-labelledby='article-title'>
@@ -107,18 +109,12 @@ export default async function Blog({ params }: Props) {
                                         : `/og?tag=&title=${encodeURIComponent(post.metadata.title)}&desc=${encodeURIComponent(post.metadata.summary)}&ni=t&tr=t`,
                                     BASE_URL
                                 ).toString(),
-                                url: new URL(`/blog/${post.slug}`, BASE_URL).toString(),
+                                url: new URL(post.href, BASE_URL).toString(),
                                 headline: post.metadata.title,
                                 description: post.metadata.summary,
-                                dateCreated: Number.isNaN(Date.parse(post.metadata.createdAt))
-                                    ? ''
-                                    : new Date(post.metadata.createdAt).toISOString(),
-                                datePublished: Number.isNaN(Date.parse(post.metadata.publishedAt))
-                                    ? ''
-                                    : new Date(post.metadata.publishedAt).toISOString(),
-                                dateModified: Number.isNaN(Date.parse(post.metadata.updatedAt))
-                                    ? ''
-                                    : new Date(post.metadata.updatedAt).toISOString(),
+                                dateCreated: post.metadata.createdAt,
+                                datePublished: post.metadata.publishedAt,
+                                dateModified: post.metadata.updatedAt,
                                 inLanguage: 'zh-TW',
                                 isFamilyFriendly: true,
                                 copyrightYear: `${new Date().getFullYear()}`,
@@ -133,10 +129,10 @@ export default async function Blog({ params }: Props) {
                                 publisher: JSON_LD_MYSELF,
                                 mainEntityOfPage: {
                                     '@type': 'WebPage',
-                                    '@id': new URL(`/blog/${post.slug}`, BASE_URL).toString()
+                                    '@id': new URL(post.href, BASE_URL).toString()
                                 },
                                 keywords: post.metadata.keywords.split(',').map((keyword) => keyword.trim()),
-                                genre: post.metadata.genre.split(',').map((genre) => genre.trim()),
+                                genre: [post.metadata.genre],
                                 articleSection: post.headers
                                     .filter((header) => header.level === 1)
                                     .map((header) => header.content),

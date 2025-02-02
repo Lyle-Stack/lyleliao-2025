@@ -50,7 +50,10 @@ export const metadata: Metadata = {
     alternates: {
         canonical: BASE_URL,
         types: {
-            'application/rss+xml': new URL('/feed', BASE_URL)
+            'application/rss+xml': '/feed'
+        },
+        languages: {
+            'zh-TW': '/'
         }
     },
     openGraph: {

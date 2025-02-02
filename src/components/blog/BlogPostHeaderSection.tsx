@@ -1,13 +1,15 @@
-import { Metadata } from '@/app/(root)/blog/utils';
+import { PostMetadata } from '@/app/(root)/blog/utils';
 
 import { AspectRatio } from '../ui/aspect-ratio';
 
-const BlogPostHeaderSection = ({ metadata }: Readonly<{ metadata: Metadata }>) => {
+const BlogPostHeaderSection = ({ metadata }: Readonly<{ metadata: PostMetadata }>) => {
     return (
         <div className='flex flex-col gap-8 pt-8 pb-16 lg:flex-row lg:pt-16'>
             <div className='flex flex-1 flex-col justify-between gap-6'>
                 <div className='flex flex-col gap-4 md:gap-5'>
-                    <p className='text-muted-foreground text-sm'>{metadata.publishedAt} · Point of View</p>
+                    <p className='text-muted-foreground text-sm'>
+                        {metadata.formattedPublishedAt} · {metadata.genre}
+                    </p>
                     <h1 id='article-title' className='text-foreground scroll-mt-40 text-4xl font-bold lg:text-5xl'>
                         {metadata.title}
                     </h1>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ComponentProps } from 'react';
 
 import BlockHeaderSection from '../share/BlockHeaderSection';
 import SectionPadding from '../share/SectionPadding';
@@ -10,8 +10,14 @@ import {
     BreadcrumbPage,
     BreadcrumbSeparator
 } from '../ui/breadcrumb';
+import BlogListGenreSwitch from './BlogListGenreSwitch';
 
-const BlogListHeaderSection = () => {
+type Props = {
+    headerContent?: ComponentProps<typeof BlockHeaderSection>;
+    genreSwitchContent?: ComponentProps<typeof BlogListGenreSwitch>;
+};
+
+const BlogListHeaderSection = ({ headerContent = {}, genreSwitchContent = {} }: Props) => {
     return (
         <SectionPadding>
             <section className='bg-background w-full pt-4 pb-16 lg:pb-24' aria-labelledby='page-heading'>
@@ -23,11 +29,13 @@ const BlogListHeaderSection = () => {
                             </BreadcrumbItem>
                             <BreadcrumbSeparator />
                             <BreadcrumbItem>
-                                <BreadcrumbPage>全部文章</BreadcrumbPage>
+                                <BreadcrumbPage>
+                                    <BlogListGenreSwitch {...genreSwitchContent} />
+                                </BreadcrumbPage>
                             </BreadcrumbItem>
                         </BreadcrumbList>
                     </Breadcrumb>
-                    <BlockHeaderSection />
+                    <BlockHeaderSection {...headerContent} />
                 </div>
             </section>
         </SectionPadding>
