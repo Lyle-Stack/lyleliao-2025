@@ -1,7 +1,8 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 
 import BlogListHeaderSection from '@/components/blog/BlogListHeaderSection';
 import BlogListPostsSection from '@/components/blog/BlogListPostsSection';
+import JsonldScript from '@/components/share/JsonldScript';
 import { BLOG_TITLE, DESCRIPTION, JSON_LD_MYSELF, NAME } from '@/constant/jsonld-and-meta';
 
 import { aiPosts, povPosts } from '../utils';
@@ -37,17 +38,14 @@ const BlogPage = async ({ params }: Props) => {
                 secondRowPosts={[secondRowPostOne, secondRowPostTwo]}
                 restPosts={restPosts}
             />
-            <script
-                type='application/ld+json'
-                dangerouslySetInnerHTML={{
-                    __html: JSON.stringify({
-                        '@context': 'http://schema.org',
-                        '@type': 'WebPage',
-                        name: `${genre} | ${BLOG_TITLE} | ${NAME}`,
-                        description: `${genre} | ${NAME} Blog Posts | ${DESCRIPTION}`,
-                        author: JSON_LD_MYSELF,
-                        publisher: JSON_LD_MYSELF
-                    })
+            <JsonldScript
+                jsonld={{
+                    '@context': 'http://schema.org',
+                    '@type': 'WebPage',
+                    name: `${genre} | ${BLOG_TITLE} | ${NAME}`,
+                    description: `${genre} | ${NAME} Blog Posts | ${DESCRIPTION}`,
+                    author: JSON_LD_MYSELF,
+                    publisher: JSON_LD_MYSELF
                 }}
             />
         </>

@@ -5,6 +5,7 @@ import { BASE_URL } from '@/app/sitemap';
 import BlogArticleAside from '@/components/blog/BlogArticleAside';
 import BlogPostHeaderSection from '@/components/blog/BlogPostHeaderSection';
 import { AsideTagClassInjector, CustomMDX, TaskListClassInjector } from '@/components/blog/mdx';
+import JsonldScript from '@/components/share/JsonldScript';
 import SectionPadding from '@/components/share/SectionPadding';
 import { JSON_LD_MYSELF, NAME } from '@/constant/jsonld-and-meta';
 import { cn } from '@/lib/utils';
@@ -93,53 +94,47 @@ export default async function Blog({ params }: Props) {
                         <BlogArticleAside headers={post.headers} />
                     </article>
                 </div>
-                {/* JSON-LD */}
-                {post.metadata && (
-                    <script
-                        type='application/ld+json'
-                        suppressHydrationWarning
-                        dangerouslySetInnerHTML={{
-                            __html: JSON.stringify({
-                                '@context': 'http://schema.org',
-                                '@type': 'BlogPosting',
-                                image: new URL(
-                                    post.metadata.image
-                                        ? post.metadata.image
-                                        : `/og?tag=&title=${encodeURIComponent(post.metadata.title)}&desc=${encodeURIComponent(post.metadata.summary)}&ni=t&tr=t`,
-                                    BASE_URL
-                                ).toString(),
-                                url: new URL(post.href, BASE_URL).toString(),
-                                headline: post.metadata.title,
-                                description: post.metadata.summary,
-                                dateCreated: post.metadata.createdAt,
-                                datePublished: post.metadata.publishedAt,
-                                dateModified: post.metadata.updatedAt,
-                                inLanguage: 'zh-TW',
-                                isFamilyFriendly: true,
-                                copyrightYear: `${new Date().getFullYear()}`,
-                                copyrightHolder: NAME,
-                                contentLocation: {
-                                    '@type': 'Place',
-                                    name: 'Taipei City, Taiwan'
-                                },
-                                accountablePerson: JSON_LD_MYSELF,
-                                author: JSON_LD_MYSELF,
-                                creator: JSON_LD_MYSELF,
-                                publisher: JSON_LD_MYSELF,
-                                mainEntityOfPage: {
-                                    '@type': 'WebPage',
-                                    '@id': new URL(post.href, BASE_URL).toString()
-                                },
-                                keywords: post.metadata.keywords.split(',').map((keyword) => keyword.trim()),
-                                genre: [post.metadata.genre],
-                                articleSection: post.headers
-                                    .filter((header) => header.level === 1)
-                                    .map((header) => header.content),
-                                articleBody: post.content
-                            })
-                        }}
-                    />
-                )}
+
+                <JsonldScript
+                    jsonld={{
+                        '@context': 'http://schema.org',
+                        '@type': 'BlogPosting',
+                        image: new URL(
+                            post.metadata.image
+                                ? post.metadata.image
+                                : `/og?tag=&title=${encodeURIComponent(post.metadata.title)}&desc=${encodeURIComponent(post.metadata.summary)}&ni=t&tr=t`,
+                            BASE_URL
+                        ).toString(),
+                        url: new URL(post.href, BASE_URL).toString(),
+                        headline: post.metadata.title,
+                        description: post.metadata.summary,
+                        dateCreated: post.metadata.createdAt,
+                        datePublished: post.metadata.publishedAt,
+                        dateModified: post.metadata.updatedAt,
+                        inLanguage: 'zh-TW',
+                        isFamilyFriendly: true,
+                        copyrightYear: `${new Date().getFullYear()}`,
+                        copyrightHolder: NAME,
+                        contentLocation: {
+                            '@type': 'Place',
+                            name: 'Taipei City, Taiwan'
+                        },
+                        accountablePerson: JSON_LD_MYSELF,
+                        author: JSON_LD_MYSELF,
+                        creator: JSON_LD_MYSELF,
+                        publisher: JSON_LD_MYSELF,
+                        mainEntityOfPage: {
+                            '@type': 'WebPage',
+                            '@id': new URL(post.href, BASE_URL).toString()
+                        },
+                        keywords: post.metadata.keywords.split(',').map((keyword) => keyword.trim()),
+                        genre: [post.metadata.genre],
+                        articleSection: post.headers
+                            .filter((header) => header.level === 1)
+                            .map((header) => header.content),
+                        articleBody: post.content
+                    }}
+                />
             </section>
         </SectionPadding>
         // <section>

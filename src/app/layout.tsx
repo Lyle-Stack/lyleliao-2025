@@ -6,6 +6,7 @@ import { ThemeProvider } from 'next-themes';
 
 import '@/app/fonts.css';
 import '@/app/globals.css';
+import JsonldScript from '@/components/share/JsonldScript';
 import { DESCRIPTION, JOB_TITLE, NAME } from '@/constant/jsonld-and-meta';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
@@ -119,15 +120,13 @@ const jsonldWebsite = {
 };
 
 const Layout = ({ children }: Readonly<{ children: ReactNode }>) => {
-    // const nonce = (await headers()).get('x-nonce')
-
     return (
         // ? https://github.com/pacocoursey/next-themes?tab=readme-ov-file#with-app
         // ? https://react.dev/reference/react-dom/client/hydrateRoot#suppressing-unavoidable-hydration-mismatch-errors
         <html suppressHydrationWarning lang='zh-TW' className='scroll-smooth'>
             <body className='antialiased'>
                 <ThemeProvider
-                    nonce='NmYxNTcyMDYtMTE1Ni00MjA1LTllM2ItMGU4MjUzYmEyMDhk'
+                    // nonce='NmYxNTcyMDYtMTE1Ni00MjA1LTllM2ItMGU4MjUzYmEyMDhk'
                     disableTransitionOnChange
                     enableSystem
                     attribute='class'>
@@ -135,11 +134,8 @@ const Layout = ({ children }: Readonly<{ children: ReactNode }>) => {
                 </ThemeProvider>
                 <Analytics />
                 <SpeedInsights />
-                <script type='application/ld+json' dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdPerson) }} />
-                <script
-                    type='application/ld+json'
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonldWebsite) }}
-                />
+                <JsonldScript jsonld={jsonLdPerson} />
+                <JsonldScript jsonld={jsonldWebsite} />
             </body>
         </html>
     );

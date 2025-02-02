@@ -11,7 +11,7 @@ const allowedOrigins = [
     'https://lyleliao.com',
     'https://fonts.gstatic.com',
     'https://fonts.googleapis.com',
-    isProduction ? '' : 'http://localhost:3000'
+    'http://localhost:3000'
 ];
 
 const corsOptions = {
@@ -45,6 +45,7 @@ export function middleware(request: NextRequest) {
      * 'strict-dynamic' only works in conjunction with 'hash-value' or 'nonce-value',
      * and if they are absent, all scripts on the page will be disabled,
      * because 'strict-dynamic' overrides the 'unsafe-inline' action
+     * ! 'strict-dynamic' is deleted
      * and disables whitelisting of host-based sources, including the 'self' token
      * ? https://csplite.com/csp104/
      * ? https://stackoverflow.com/questions/59848978/strict-dynamic-is-present-so-host-based-whitelisting-is-disabled
@@ -56,7 +57,7 @@ export function middleware(request: NextRequest) {
      * */
     const cspHeader = `
     default-src 'self';
-    script-src 'self' 'nonce-NmYxNTcyMDYtMTE1Ni00MjA1LTllM2ItMGU4MjUzYmEyMDhk' 'strict-dynamic' https: http: ${allowedOrigins.join(' ')} ${isProduction ? '' : `'unsafe-eval'`};
+    script-src 'self' https: http: ${allowedOrigins.join(' ')} ${isProduction ? `'unsafe-inline'` : `'unsafe-eval'`};
     style-src 'self' ${allowedOrigins.join(' ')} 'unsafe-inline';
     img-src 'self' blob: data: https://s3.ap-southeast-2.amazonaws.com ${allowedOrigins.join(' ')};
     font-src 'self' ${allowedOrigins.join(' ')};
@@ -70,7 +71,7 @@ export function middleware(request: NextRequest) {
     const contentSecurityPolicyHeaderValue = cspHeader.replace(/\s{2,}/g, ' ').trim();
 
     const requestHeaders = new Headers(request.headers);
-    requestHeaders.set('x-nonce', 'NmYxNTcyMDYtMTE1Ni00MjA1LTllM2ItMGU4MjUzYmEyMDhk');
+    // requestHeaders.set('x-nonce', 'NmYxNTcyMDYtMTE1Ni00MjA1LTllM2ItMGU4MjUzYmEyMDhk');
     requestHeaders.set('Content-Security-Policy', contentSecurityPolicyHeaderValue);
 
     const response = NextResponse.next({
@@ -105,7 +106,7 @@ export const config = {
          * - customized OG images and RSS routes
          */
         {
-            source: '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|og|feed).*)',
+            source: '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|og|feed|_vercel).*)',
             missing: [
                 { type: 'header', key: 'next-router-prefetch' },
                 { type: 'header', key: 'purpose', value: 'prefetch' }
@@ -113,7 +114,7 @@ export const config = {
         },
 
         {
-            source: '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|og|feed).*)',
+            source: '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|og|feed|_vercel).*)',
             has: [
                 { type: 'header', key: 'next-router-prefetch' },
                 { type: 'header', key: 'purpose', value: 'prefetch' }
@@ -121,7 +122,7 @@ export const config = {
         },
 
         {
-            source: '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|og|feed).*)',
+            source: '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|og|feed|_vercel).*)',
             has: [{ type: 'header', key: 'x-present' }],
             missing: [{ type: 'header', key: 'x-missing', value: 'prefetch' }]
         }

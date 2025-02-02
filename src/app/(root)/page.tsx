@@ -5,6 +5,7 @@ import CtaSection from '@/components/home/CtaSection';
 // import FaqSection from '@/components/home/FaqSection';
 import FeatureSection from '@/components/home/FeatureSection';
 import HeroSection from '@/components/home/HeroSection';
+import JsonldScript from '@/components/share/JsonldScript';
 import { DESCRIPTION, JSON_LD_MYSELF, NAME } from '@/constant/jsonld-and-meta';
 
 // import PricingSection from '@/components/home/PricingSection';
@@ -33,7 +34,7 @@ const HomePage = () => {
             {/* <FaqSection /> */}
             {/* <ContactSection /> */}
             {/* <RichTextSection /> */}
-            <script type='application/ld+json' dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonlfWebpage) }} />
+            <JsonldScript jsonld={jsonlfWebpage} />
         </>
     );
 };

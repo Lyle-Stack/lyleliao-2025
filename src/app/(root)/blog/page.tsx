@@ -1,7 +1,8 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 
 import BlogListHeaderSection from '@/components/blog/BlogListHeaderSection';
 import BlogListPostsSection from '@/components/blog/BlogListPostsSection';
+import JsonldScript from '@/components/share/JsonldScript';
 import { BLOG_TITLE, DESCRIPTION, JSON_LD_MYSELF, NAME } from '@/constant/jsonld-and-meta';
 
 import { livePosts } from './utils';
@@ -31,7 +32,7 @@ const BlogPage = () => {
                 secondRowPosts={[secondRowPostOne, secondRowPostTwo]}
                 restPosts={restPosts}
             />
-            <script type='application/ld+json' dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonlfWebpage) }} />
+            <JsonldScript jsonld={jsonlfWebpage} />
         </>
     );
 };
