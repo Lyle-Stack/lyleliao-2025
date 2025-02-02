@@ -76,7 +76,7 @@ const NavigationBar = () => {
                             ease: transitionEase,
                             duration: 0.4
                         }}>
-                        <Link href='/' aria-label='Home' className='py-2 pr-6' prefetch={false}>
+                        <Link href='/' aria-label='Home Page' className='py-2 pr-6' prefetch={false}>
                             <LLLogo />
                         </Link>
                         <div className='flex flex-row flex-nowrap items-center gap-2'>

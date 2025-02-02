@@ -31,7 +31,7 @@ const BlogCardLinkWithImage = ({
     return (
         <Link
             href={post.href}
-            role='list'
+            role='listitem'
             className={cn('group/card flex flex-col flex-nowrap lg:flex-row lg:items-center', className)}>
             <PureCard
                 className={cn('flex-1 pb-4 lg:h-full lg:pb-6', cardClassName)}
@@ -73,7 +73,7 @@ const BlogListPostsSection = ({ highlightPost, secondRowPosts, restPosts }: Porp
                                 ratio={1.6}
                             />
                         )}
-                        <div className='-mb-12 grid grid-cols-1 lg:mb-auto lg:grid-cols-2'>
+                        <div className='-mb-12 grid grid-cols-1 lg:mb-auto lg:grid-cols-2' role='list'>
                             {secondRowPosts &&
                                 secondRowPosts
                                     .filter(Boolean)
@@ -86,7 +86,7 @@ const BlogListPostsSection = ({ highlightPost, secondRowPosts, restPosts }: Porp
                                         />
                                     ))}
                         </div>
-                        <div className='grid grid-cols-1 lg:grid-cols-3 lg:gap-y-8'>
+                        <div className='grid grid-cols-1 lg:grid-cols-3 lg:gap-y-8' role='list'>
                             {restPosts &&
                                 restPosts.map((post, index) => (
                                     <CardWithInnerLink

@@ -8,10 +8,9 @@ const isProduction = process.env.NODE_ENV === 'production';
  * ? https://nextjs.org/docs/app/building-your-application/routing/middleware#cors
  */
 const allowedOrigins = [
-    'https://lyleliao.com',
+    isProduction ? 'https://lyleliao.com' : 'http://localhost:3000',
     'https://fonts.gstatic.com',
-    'https://fonts.googleapis.com',
-    'http://localhost:3000'
+    'https://fonts.googleapis.com'
 ];
 
 const corsOptions = {

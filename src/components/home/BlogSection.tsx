@@ -7,7 +7,7 @@ import SectionPadding from '../share/SectionPadding';
 const BlogSection = () => {
     return (
         <SectionPadding>
-            <section className='py-16 md:py-24' aria-labelledby='blog-section-2-heading'>
+            <section className='py-16 md:py-24' aria-labelledby='blog-section-heading'>
                 <div className='mx-auto px-3'>
                     <div className='flex flex-col items-start gap-12'>
                         <BlockHeaderSection />
