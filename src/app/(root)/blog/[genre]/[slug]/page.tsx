@@ -1,15 +1,14 @@
 import type { Metadata } from 'next';
 import { RedirectType, notFound, permanentRedirect } from 'next/navigation';
 
-import { NAME } from '@/app/layout';
 import { BASE_URL } from '@/app/sitemap';
 import BlogArticleAside from '@/components/blog/BlogArticleAside';
 import BlogPostHeaderSection from '@/components/blog/BlogPostHeaderSection';
 import { AsideTagClassInjector, CustomMDX, TaskListClassInjector } from '@/components/blog/mdx';
 import SectionPadding from '@/components/share/SectionPadding';
+import { JSON_LD_MYSELF, NAME } from '@/constant/jsonld-and-meta';
 import { cn } from '@/lib/utils';
 
-import { JSON_LD_MYSELF } from '../../../page';
 import { livePosts } from '../../utils';
 import { allGenreSlug, genreReverseMap } from '../../utils-genre';
 

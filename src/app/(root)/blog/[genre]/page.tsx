@@ -1,12 +1,9 @@
 import { Metadata } from 'next';
 
-import { DESCRIPTION, NAME } from '@/app/layout';
 import BlogListHeaderSection from '@/components/blog/BlogListHeaderSection';
 import BlogListPostsSection from '@/components/blog/BlogListPostsSection';
-import { BreadcrumbItem, BreadcrumbPage } from '@/components/ui/breadcrumb';
+import { BLOG_TITLE, DESCRIPTION, JSON_LD_MYSELF, NAME } from '@/constant/jsonld-and-meta';
 
-import { JSON_LD_MYSELF } from '../../page';
-import { TITLE } from '../page';
 import { aiPosts, povPosts } from '../utils';
 import { allGenreSlug, genreReverseMap } from '../utils-genre';
 
@@ -21,7 +18,7 @@ type Props = {
 };
 
 export const metadata: Metadata = {
-    title: TITLE
+    title: BLOG_TITLE
 };
 
 const BlogPage = async ({ params }: Props) => {
@@ -46,7 +43,7 @@ const BlogPage = async ({ params }: Props) => {
                     __html: JSON.stringify({
                         '@context': 'http://schema.org',
                         '@type': 'WebPage',
-                        name: `${genre} | ${TITLE} | ${NAME}`,
+                        name: `${genre} | ${BLOG_TITLE} | ${NAME}`,
                         description: `${genre} | ${NAME} Blog Posts | ${DESCRIPTION}`,
                         author: JSON_LD_MYSELF,
                         publisher: JSON_LD_MYSELF

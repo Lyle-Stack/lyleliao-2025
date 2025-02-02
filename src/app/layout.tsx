@@ -6,16 +6,13 @@ import { ThemeProvider } from 'next-themes';
 
 import '@/app/fonts.css';
 import '@/app/globals.css';
+import { DESCRIPTION, JOB_TITLE, NAME } from '@/constant/jsonld-and-meta';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import { BASE_URL } from './sitemap';
 
-export const NAME = 'Lyle 仲逸';
-export const JOB_TITLE = 'Full Stack Developer & AI consultant';
 const TITLE = `${NAME} | ${JOB_TITLE}`;
-export const DESCRIPTION =
-    '人人都該有的 AI 自動化時代, Lyle 網頁全端開發 x AI 驅動,創建你的數位未來,運用科技解鎖無限未來,幫助您實現夢想。';
 
 export const metadata: Metadata = {
     metadataBase: BASE_URL,
