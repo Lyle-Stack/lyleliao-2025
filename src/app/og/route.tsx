@@ -23,7 +23,12 @@ const DEFAULT_DESC =
  */
 export async function GET(request: Request): Promise<ImageResponse | Response> {
     try {
-        const { searchParams } = new URL(request.url);
+        const { searchParams, host } = new URL(request.url);
+
+        // ! This api is only for development mode
+        if (host !== 'localhost:3000') {
+            return new Response('Forbidden', { status: 403 });
+        }
 
         // Determine if no image should be included
         const isNoImage = searchParams.get('ni') === 't';

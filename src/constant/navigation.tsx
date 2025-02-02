@@ -15,10 +15,10 @@ export const NAVIGATION_LINKS: NavigationLink[] = [
     {
         name: 'Home',
         href: '/',
-        desc: 'Return to our main page to start fresh',
+        desc: '重新探索 Lyle',
         icon: <House className='size-5' />,
-        titleInNotFound: 'Go back to homepage',
-        descInNotFound: 'Return to our main page to start fresh'
+        titleInNotFound: '回到首頁',
+        descInNotFound: '重新探索 Lyle'
     },
     // {
     //     name: 'Doc',
@@ -31,10 +31,10 @@ export const NAVIGATION_LINKS: NavigationLink[] = [
     {
         name: 'Blog',
         href: '/blog',
-        desc: 'Check out our latest articles and updates',
+        desc: '提供工作、生活、學習有用的資訊與技巧，讓生活更加美好',
         icon: <Newspaper className='size-5' />,
-        titleInNotFound: 'Explore our blog',
-        descInNotFound: 'Check out our latest articles and updates'
+        titleInNotFound: '逛逛 Lyle 的精采好文',
+        descInNotFound: '提供工作、生活、學習有用的資訊與技巧，讓生活更加美好'
     }
 ];
 

@@ -2,7 +2,7 @@ import './tailwind.CzzIUtUe.css';
 
 const page = () => {
     return (
-        <div className='container mx-auto h-screen max-w-sm'>
+        <div className='mx-auto h-screen max-w-sm'>
             <div className='py-10 text-center text-2xl'>
                 <img
                     className='mx-auto'
@@ -13,7 +13,7 @@ const page = () => {
                 <form>
                     <div className='p-4'>
                         <div className='my-4'>
-                            <div className='card border shadow'>
+                            <div className='card border shadow-sm'>
                                 <div className='card-body'>
                                     <h2 className='card-title mb-4'>以下哪一個形容詞最能描述你?</h2>
                                     <div className='form-control'>
@@ -45,7 +45,7 @@ const page = () => {
                             </div>
                         </div>
                         <div className='my-4'>
-                            <div className='card border shadow'>
+                            <div className='card border shadow-sm'>
                                 <div className='card-body'>
                                     <h2 className='card-title mb-4'>你最希望在別人眼中你是怎樣的人?</h2>
                                     <div className='form-control'>
@@ -76,7 +76,7 @@ const page = () => {
                             </div>
                         </div>
                         <div className='my-4'>
-                            <div className='card border shadow'>
+                            <div className='card border shadow-sm'>
                                 <div className='card-body'>
                                     <h2 className='card-title mb-4'>以下哪種狀況是你會最享受的?</h2>
                                     <div className='form-control'>
@@ -107,7 +107,7 @@ const page = () => {
                             </div>
                         </div>
                         <div className='my-4'>
-                            <div className='card border shadow'>
+                            <div className='card border shadow-sm'>
                                 <div className='card-body'>
                                     <h2 className='card-title mb-4'>
                                         在開始進行一個項目時，你最喜歡負責的會是以下哪一種任務?
@@ -140,7 +140,7 @@ const page = () => {
                             </div>
                         </div>
                         <div className='my-4'>
-                            <div className='card border shadow'>
+                            <div className='card border shadow-sm'>
                                 <div className='card-body'>
                                     <h2 className='card-title mb-4'>參與聚會時，别人通常會怎麽描述你?</h2>
                                     <div className='form-control'>
@@ -171,7 +171,7 @@ const page = () => {
                             </div>
                         </div>
                         <div className='my-4'>
-                            <div className='card border shadow'>
+                            <div className='card border shadow-sm'>
                                 <div className='card-body'>
                                     <h2 className='card-title mb-4'>
                                         當你需要在壓力下完成工作時，以下哪一個是你最'不'仰賴的選項?
@@ -204,7 +204,7 @@ const page = () => {
                             </div>
                         </div>
                         <div className='my-4'>
-                            <div className='card border shadow'>
+                            <div className='card border shadow-sm'>
                                 <div className='card-body'>
                                     <h2 className='card-title mb-4'>以下哪一個形容詞最能描述你?</h2>
                                     <div className='form-control'>
@@ -235,7 +235,7 @@ const page = () => {
                             </div>
                         </div>
                         <div className='my-4'>
-                            <div className='card border shadow'>
+                            <div className='card border shadow-sm'>
                                 <div className='card-body'>
                                     <h2 className='card-title mb-4'>當需要做重大決定時，你⽐較喜歡怎麽做?</h2>
                                     <div className='form-control'>
@@ -266,7 +266,7 @@ const page = () => {
                             </div>
                         </div>
                         <div className='my-4'>
-                            <div className='card border shadow'>
+                            <div className='card border shadow-sm'>
                                 <div className='card-body'>
                                     <h2 className='card-title mb-4'>你最不希望別人認為你是怎樣的人?</h2>
                                     <div className='form-control'>
@@ -297,7 +297,7 @@ const page = () => {
                             </div>
                         </div>
                         <div className='my-4'>
-                            <div className='card border shadow'>
+                            <div className='card border shadow-sm'>
                                 <div className='card-body'>
                                     <h2 className='card-title mb-4'>你最喜歡以下哪一種選項?</h2>
                                     <div className='form-control'>
@@ -328,7 +328,7 @@ const page = () => {
                             </div>
                         </div>
                         <div className='my-4'>
-                            <div className='card border shadow'>
+                            <div className='card border shadow-sm'>
                                 <div className='card-body'>
                                     <h2 className='card-title mb-4'>
                                         在一個項目開始進行時，你最'不'喜歡的是哪一種任務?
@@ -361,7 +361,7 @@ const page = () => {
                             </div>
                         </div>
                         <div className='my-4'>
-                            <div className='card border shadow'>
+                            <div className='card border shadow-sm'>
                                 <div className='card-body'>
                                     <h2 className='card-title mb-4'>你最常在一個團隊裏扮演哪個角色?</h2>
                                     <div className='form-control'>
@@ -392,7 +392,7 @@ const page = () => {
                             </div>
                         </div>
                         <div className='my-4'>
-                            <div className='card border shadow'>
+                            <div className='card border shadow-sm'>
                                 <div className='card-body'>
                                     <h2 className='card-title mb-4'>你最'不'擅長的是以下哪個選項?</h2>
                                     <div className='form-control'>
@@ -423,7 +423,7 @@ const page = () => {
                             </div>
                         </div>
                         <div className='my-4'>
-                            <div className='card border shadow'>
+                            <div className='card border shadow-sm'>
                                 <div className='card-body'>
                                     <h2 className='card-title mb-4'>你最強的天賦能力是哪一個?</h2>
                                     <div className='form-control'>
@@ -454,7 +454,7 @@ const page = () => {
                             </div>
                         </div>
                         <div className='my-4'>
-                            <div className='card border shadow'>
+                            <div className='card border shadow-sm'>
                                 <div className='card-body'>
                                     <h2 className='card-title mb-4'>在一個團隊中，以下哪種狀況會讓你覺得最有壓力?</h2>
                                     <div className='form-control'>
@@ -485,7 +485,7 @@ const page = () => {
                             </div>
                         </div>
                         <div className='my-4'>
-                            <div className='card border shadow'>
+                            <div className='card border shadow-sm'>
                                 <div className='card-body'>
                                     <h2 className='card-title mb-4'>你最'不'喜歡以下哪個選項?</h2>
                                     <div className='form-control'>
@@ -516,7 +516,7 @@ const page = () => {
                             </div>
                         </div>
                         <div className='my-4'>
-                            <div className='card border shadow'>
+                            <div className='card border shadow-sm'>
                                 <div className='card-body'>
                                     <h2 className='card-title mb-4'>你最擅長的是...?</h2>
                                     <div className='form-control'>
@@ -547,7 +547,7 @@ const page = () => {
                             </div>
                         </div>
                         <div className='my-4'>
-                            <div className='card border shadow'>
+                            <div className='card border shadow-sm'>
                                 <div className='card-body'>
                                     <h2 className='card-title mb-4'>你最'不'擅⾧的是...?</h2>
                                     <div className='form-control'>
@@ -578,7 +578,7 @@ const page = () => {
                             </div>
                         </div>
                         <div className='my-4'>
-                            <div className='card border shadow'>
+                            <div className='card border shadow-sm'>
                                 <div className='card-body'>
                                     <h2 className='card-title mb-4'>以下哪個選項會讓你有最大的成就感?</h2>
                                     <div className='form-control'>
@@ -611,7 +611,7 @@ const page = () => {
                             </div>
                         </div>
                         <div className='my-4'>
-                            <div className='card border shadow'>
+                            <div className='card border shadow-sm'>
                                 <div className='card-body'>
                                     <h2 className='card-title mb-4'>以下哪種人會讓你覺得最困擾?</h2>
                                     <div className='form-control'>
@@ -642,7 +642,7 @@ const page = () => {
                             </div>
                         </div>
                         <div className='my-4'>
-                            <div className='card border shadow'>
+                            <div className='card border shadow-sm'>
                                 <div className='card-body'>
                                     <h2 className='card-title mb-4'>在工作上，其他人最常用哪個形容詞來描述你?</h2>
                                     <div className='form-control'>
@@ -673,7 +673,7 @@ const page = () => {
                             </div>
                         </div>
                         <div className='my-4'>
-                            <div className='card border shadow'>
+                            <div className='card border shadow-sm'>
                                 <div className='card-body'>
                                     <h2 className='card-title mb-4'>在工作上，其他人最'不會'⽤哪個形容詞來描述你?</h2>
                                     <div className='form-control'>
@@ -704,7 +704,7 @@ const page = () => {
                             </div>
                         </div>
                         <div className='my-4'>
-                            <div className='card border shadow'>
+                            <div className='card border shadow-sm'>
                                 <div className='card-body'>
                                     <h2 className='card-title mb-4'>你最擅長的是...?</h2>
                                     <div className='form-control'>
@@ -735,7 +735,7 @@ const page = () => {
                             </div>
                         </div>
                         <div className='my-4'>
-                            <div className='card border shadow'>
+                            <div className='card border shadow-sm'>
                                 <div className='card-body'>
                                     <h2 className='card-title mb-4'>
                                         需要在壓力下繼續前進時，以下哪一個會是你最仰賴的選項?
@@ -768,7 +768,7 @@ const page = () => {
                             </div>
                         </div>
                         <div className='my-4'>
-                            <div className='card border shadow'>
+                            <div className='card border shadow-sm'>
                                 <div className='card-body'>
                                     <h2 className='card-title mb-4'>在完成一個項目後，你最享受的會是哪個部分...?</h2>
                                     <div className='form-control'>

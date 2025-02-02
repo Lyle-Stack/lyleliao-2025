@@ -11,15 +11,15 @@ import { Check, Info } from 'lucide-react';
 const PricingSection = () => {
     return (
         <SectionPadding>
-            <section className='w-full bg-background py-16 md:py-24' aria-labelledby='pricing-section-title'>
-                <div className='container mx-auto px-3'>
+            <section className='bg-background w-full py-16 md:py-24' aria-labelledby='pricing-section-title'>
+                <div className='mx-auto px-3'>
                     <div className='flex flex-col items-center gap-8'>
                         <div className='flex max-w-xl flex-col items-center gap-4 text-center md:gap-5'>
-                            <p className='text-base font-semibold text-muted-foreground'>Pricing section</p>
+                            <p className='text-muted-foreground text-base font-semibold'>Pricing section</p>
                             <h2 id='pricing-section-title' className='text-3xl font-bold md:text-4xl'>
                                 Benefit-focused headline that highlights choice
                             </h2>
-                            <p className='text-base text-muted-foreground'>
+                            <p className='text-muted-foreground text-base'>
                                 Add a concise value statement that addresses price sensitivity and showcases plan
                                 flexibility. Focus on transformation and results while keeping it under 2 lines. Align
                                 with your pricing table options.
@@ -113,11 +113,11 @@ const PricingSection = () => {
                                 ].map((info) => (
                                     <Card
                                         data-important={info.isSuggested}
-                                        className='group/card data-[important=true]:border-2 data-[important=true]:border-primary lg:p-8'
+                                        className='group/card data-[important=true]:border-primary data-[important=true]:border-2 lg:p-8'
                                         key={`pricing-section-card-${info.title}`}>
                                         <CardContent className='flex-col gap-8'>
                                             <CardContent className='relative flex-col gap-6'>
-                                                <Badge className='absolute right-0 top-1 hidden group-data-[important=true]/card:inline-flex'>
+                                                <Badge className='absolute top-1 right-0 hidden group-data-[important=true]/card:inline-flex'>
                                                     Most popular
                                                 </Badge>
                                                 <div className='relative flex flex-col gap-3'>
@@ -129,7 +129,7 @@ const PricingSection = () => {
                                                         <span className='text-4xl font-semibold'>
                                                             {info.mothlyPrice}
                                                         </span>
-                                                        <span className='text-base text-muted-foreground'>/month</span>
+                                                        <span className='text-muted-foreground text-base'>/month</span>
                                                     </div>
                                                 </TabsContent>
                                                 <TabsContent value='annually' className='mt-0'>
@@ -137,7 +137,7 @@ const PricingSection = () => {
                                                         <span className='text-4xl font-semibold'>
                                                             {info.annuallyPrice}
                                                         </span>
-                                                        <span className='text-base text-muted-foreground'>/year</span>
+                                                        <span className='text-muted-foreground text-base'>/year</span>
                                                     </div>
                                                 </TabsContent>
                                                 <Button variant={info.isSuggested ? 'default' : 'secondary'}>
@@ -151,14 +151,14 @@ const PricingSection = () => {
                                                         <div
                                                             className='flex items-center gap-3'
                                                             key={`pricing-section-card-feature-${feat.title}`}>
-                                                            <Check className='size-5 text-primary' />
-                                                            <span className='flex-1 text-sm text-muted-foreground'>
+                                                            <Check className='text-primary size-5' />
+                                                            <span className='text-muted-foreground flex-1 text-sm'>
                                                                 {feat.title}
                                                             </span>
                                                             <TooltipProvider>
                                                                 <Tooltip>
                                                                     <TooltipTrigger>
-                                                                        <Info className='size-4 cursor-pointer text-muted-foreground opacity-70 hover:opacity-100' />
+                                                                        <Info className='text-muted-foreground size-4 cursor-pointer opacity-70 hover:opacity-100' />
                                                                     </TooltipTrigger>
                                                                     <TooltipContent>
                                                                         <p>{feat.description}</p>

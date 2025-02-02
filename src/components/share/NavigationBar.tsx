@@ -7,15 +7,25 @@ import Link from 'next/link';
 import LLLogo from '@/components/icon/LLLogo';
 import SectionPadding from '@/components/share/SectionPadding';
 import ThemeSwitch from '@/components/share/ThemeSwitch';
-import { Button } from '@/components/ui/button';
-import { Dialog, DialogClose, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { buttonVariants } from '@/components/ui/button';
 import { NAVIGATION_LINKS } from '@/constant/navigation';
 
+import {
+    Sheet,
+    SheetClose,
+    SheetContent,
+    SheetDescription,
+    SheetFooter,
+    SheetHeader,
+    SheetTitle,
+    SheetTrigger
+} from '../ui/sheet';
+import SocialLinks from './SocialLinks';
 import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
 import { Menu } from 'lucide-react';
 
 // ? https://john.design/journal/nav-show-hide
-/** Define variants for the parent container styles **/
+/** Define variants for the parent styles **/
 const parentVariants = {
     /** Define the "visible" state and its styles **/
     visible: { opacity: 1, y: 0 },
@@ -49,7 +59,7 @@ const NavigationBar = () => {
 
     return (
         <motion.nav
-            className='sticky right-0 top-0 isolate z-50 border-b border-border/50 bg-background/10 py-3.5 backdrop-blur md:py-4'
+            className='border-border/50 bg-background/10 sticky top-0 right-0 isolate z-50 border-b py-3.5 backdrop-blur-sm md:py-4'
             variants={parentVariants}
             animate={hidden ? 'hidden' : 'visible'}
             transition={{
@@ -60,44 +70,67 @@ const NavigationBar = () => {
             <SectionPadding>
                 <div>
                     <motion.div
-                        className='flex w-full items-center justify-between gap-6 px-3'
+                        className='flex w-full items-center justify-between px-3'
                         variants={childVariants}
                         transition={{
                             ease: transitionEase,
                             duration: 0.4
                         }}>
-                        <LLLogo />
+                        <Link href='/' aria-label='Home' className='py-2 pr-6' prefetch={false}>
+                            <LLLogo />
+                        </Link>
                         <div className='flex flex-row flex-nowrap items-center gap-2'>
-                            <Dialog>
-                                <DialogTrigger asChild>
-                                    <Button variant='ghost' size='icon' className='md:hidden [&_svg]:size-8'>
-                                        <Menu size={40} />
-                                        <span className='sr-only'>Toggle Menu</span>
-                                    </Button>
-                                </DialogTrigger>
-                                <DialogContent>
-                                    <DialogHeader>
-                                        <DialogTitle>Where Are You Going?</DialogTitle>
-                                        <div className='flex flex-col flex-nowrap items-center gap-2 py-4'>
-                                            {NAVIGATION_LINKS.map((link) => (
-                                                <DialogClose key={link.name} asChild>
-                                                    <Link href={link.href} aria-description={link.desc}>
-                                                        <Button variant='ghost'>{link.name}</Button>
-                                                    </Link>
-                                                </DialogClose>
-                                            ))}
-                                        </div>
-                                    </DialogHeader>
-                                </DialogContent>
-                            </Dialog>
+                            {/* desktop menu */}
                             <div className='hidden flex-row flex-nowrap items-center gap-2 pr-2 md:flex'>
                                 {NAVIGATION_LINKS.map((link) => (
-                                    <Link key={link.name} href={link.href} aria-description={link.desc}>
-                                        <Button variant='ghost'>{link.name}</Button>
+                                    <Link
+                                        key={link.name}
+                                        href={link.href}
+                                        aria-description={link.desc}
+                                        className={buttonVariants({ variant: 'ghost' })}>
+                                        {link.name}
                                     </Link>
                                 ))}
                             </div>
                             <ThemeSwitch />
+
+                            {/* mobile menu */}
+                            <Sheet>
+                                <SheetTrigger
+                                    className={buttonVariants({
+                                        variant: 'ghost',
+                                        size: 'icon',
+                                        className: 'md:hidden [&_svg]:size-8'
+                                    })}>
+                                    <Menu size={40} />
+                                    <span className='sr-only'>Toggle Menu</span>
+                                </SheetTrigger>
+                                <SheetContent>
+                                    <SheetHeader>
+                                        <SheetTitle className='text-center'>探索其他...地方？</SheetTitle>
+                                        <SheetDescription>
+                                            <span className='flex flex-col gap-2 py-4'>
+                                                {NAVIGATION_LINKS.map((link) => (
+                                                    <SheetClose key={link.name} asChild>
+                                                        <Link
+                                                            href={link.href}
+                                                            aria-description={link.desc}
+                                                            className={buttonVariants({
+                                                                variant: 'ghost',
+                                                                className: 'w-full'
+                                                            })}>
+                                                            {link.name}
+                                                        </Link>
+                                                    </SheetClose>
+                                                ))}
+                                            </span>
+                                        </SheetDescription>
+                                        <SheetFooter className='sm:justify-center'>
+                                            <SocialLinks />
+                                        </SheetFooter>
+                                    </SheetHeader>
+                                </SheetContent>
+                            </Sheet>
                         </div>
                     </motion.div>
                 </div>
