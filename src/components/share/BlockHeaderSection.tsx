@@ -22,7 +22,7 @@ const BlockHeaderSection = ({
                 className
             )}>
             <p className='text-muted-foreground text-base font-semibold md:text-sm'>{subTitle}</p>
-            <h2 id='blog-section-2-heading' className='text-3xl leading-tight font-bold md:text-4xl'>
+            <h2 id='block-section-heading' className='text-3xl leading-tight font-bold md:text-4xl'>
                 {title}
             </h2>
             <p className='text-muted-foreground text-base'>{desc}</p>

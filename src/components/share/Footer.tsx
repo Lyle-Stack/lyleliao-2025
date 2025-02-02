@@ -9,14 +9,18 @@ const Footer = () => {
             <footer className='bg-background w-full py-16 lg:py-24' role='contentinfo' aria-label='Site footer'>
                 <div className='mx-auto flex flex-col gap-12 px-3 md:gap-16'>
                     <div className='relative flex flex-col items-center gap-12 md:flex-row md:items-center md:justify-between md:gap-8'>
-                        <a href='/'>
+                        <a href='/' aria-label='Home Page'>
                             <LLLogo />
                         </a>
                         <nav
                             className='[&>*]:text-muted-foreground hover:[&>*]:text-foreground flex flex-col items-center gap-6 md:absolute md:left-1/2 md:-translate-x-1/2 md:flex-row md:gap-8 [&>*]:transition-colors'
                             aria-label='Footer navigation'>
-                            <a href='/'>Home</a>
-                            <a href='/blog'>Blog</a>
+                            <a href='/' aria-label='Home Page'>
+                                Home
+                            </a>
+                            <a href='/blog' aria-label='Blog Page'>
+                                Blog
+                            </a>
                         </nav>
                         <SocialLinks />
                     </div>

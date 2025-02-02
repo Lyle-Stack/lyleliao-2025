@@ -13,13 +13,21 @@ const SocialLinks = ({ className }: { className?: ClassNameValue }) => {
                 className
             )}
             aria-label='Social media links'>
-            <a href='https://www.instagram.com/liaochungyid/' target='_blank' rel='noreferrer'>
+            <a
+                href='https://www.instagram.com/liaochungyid/'
+                aria-label='Instagram External Link'
+                target='_blank'
+                rel='noreferrer'>
                 <Instagram />
             </a>
-            <a href='https://www.linkedin.com/in/lyleliao/' target='_blank' rel='noreferrer'>
+            <a
+                href='https://www.linkedin.com/in/lyleliao/'
+                aria-label='Linkedin External Link'
+                target='_blank'
+                rel='noreferrer'>
                 <Linkedin />
             </a>
-            <a href='https://github.com/lyle-Stack/' target='_blank' rel='noreferrer'>
+            <a href='https://github.com/lyle-Stack/' aria-label='Github External Link' target='_blank' rel='noreferrer'>
                 <Github />
             </a>
         </div>
