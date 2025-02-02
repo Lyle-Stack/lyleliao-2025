@@ -33,6 +33,7 @@ const BASE_TEXT_CLASSNAMES = 'text-pretty break-words';
 function createHeading(level: 1 | 2 | 3 | 4 | 5 | 6) {
     return function Heading({ children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) {
         const Comp = !level ? Slot : level !== 6 ? `h${level + 1}` : 'h6';
+
         return (
             <Comp
                 className={cn(
@@ -105,6 +106,7 @@ async function RoundedImage({ alt, ...props }: React.ImgHTMLAttributes<HTMLImage
                 )
             }
         }));
+
     return (
         <span className='flex w-full flex-col justify-center gap-1'>
             <img alt={alt} className='rounded-md' {...props} />
@@ -137,6 +139,7 @@ function ListWrapper(ordered: boolean) {
                 />
             );
         }
+
         return (
             <ul
                 className={cn(
