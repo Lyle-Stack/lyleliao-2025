@@ -1,16 +1,21 @@
+import { ComponentProps } from 'react';
+
 import { livePosts } from '@/app/(root)/blog/utils';
 
 import BlockHeaderSection from '../share/BlockHeaderSection';
 import { CardWithInnerLink } from '../share/CustomizedCard';
 import SectionPadding from '../share/SectionPadding';
 
-const BlogSection = () => {
+type Props = {
+    headerContent?: ComponentProps<typeof BlockHeaderSection>;
+};
+const BlogSection = ({ headerContent = {} }: Props) => {
     return (
         <SectionPadding>
             <section className='py-16 md:py-24' aria-labelledby='blog-section-heading'>
                 <div className='mx-auto px-3'>
                     <div className='flex flex-col items-start gap-12'>
-                        <BlockHeaderSection />
+                        <BlockHeaderSection {...headerContent} />
                         <div className='grid grid-cols-1 lg:grid-cols-3' role='list'>
                             {livePosts.slice(0, 3).map((post, index) => (
                                 <CardWithInnerLink

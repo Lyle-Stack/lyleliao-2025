@@ -5,6 +5,7 @@ import { BASE_URL } from '@/app/sitemap';
 import BlogArticleAside from '@/components/blog/BlogArticleAside';
 import BlogPostHeaderSection from '@/components/blog/BlogPostHeaderSection';
 import { AsideTagClassInjector, CustomMDX, TaskListClassInjector } from '@/components/blog/mdx';
+import BlogSection from '@/components/home/BlogSection';
 import JsonldScript from '@/components/share/JsonldScript';
 import SectionPadding from '@/components/share/SectionPadding';
 import {
@@ -84,84 +85,95 @@ export default async function Blog({ params }: Props) {
     }
 
     return (
-        <SectionPadding>
-            <section>
-                <div className='mx-auto px-3'>
-                    <section className='bg-background w-full pt-4'>
-                        <Breadcrumb>
-                            <BreadcrumbList>
-                                <BreadcrumbItem>
-                                    <BreadcrumbLink href='/blog'>Blog</BreadcrumbLink>
-                                </BreadcrumbItem>
-                                <BreadcrumbSeparator />
-                                <BreadcrumbItem>
-                                    <BreadcrumbLink href={`/blog/${propGenre}`}>{post.metadata.genre}</BreadcrumbLink>
-                                </BreadcrumbItem>
-                                <BreadcrumbSeparator />
-                                <BreadcrumbItem>
-                                    <BreadcrumbPage>{post.metadata.title}</BreadcrumbPage>
-                                </BreadcrumbItem>
-                            </BreadcrumbList>
-                        </Breadcrumb>
-                    </section>
-                    <BlogPostHeaderSection metadata={post.metadata} />
-                    <article
-                        className='border-border relative flex flex-row justify-center gap-12 border-x px-4'
-                        aria-labelledby='article-title'>
-                        <main
-                            className={cn(
-                                'text-foreground grid max-w-3xl grid-cols-1 px-8 text-lg',
-                                AsideTagClassInjector,
-                                TaskListClassInjector
-                            )}>
-                            <CustomMDX source={post.content} />
-                        </main>
-                        <BlogArticleAside headers={post.headers} />
-                    </article>
-                </div>
+        <>
+            <SectionPadding>
+                <section>
+                    <div className='mx-auto px-3'>
+                        <section className='bg-background w-full pt-4'>
+                            <Breadcrumb>
+                                <BreadcrumbList>
+                                    <BreadcrumbItem>
+                                        <BreadcrumbLink href='/blog'>Blog</BreadcrumbLink>
+                                    </BreadcrumbItem>
+                                    <BreadcrumbSeparator />
+                                    <BreadcrumbItem>
+                                        <BreadcrumbLink href={`/blog/${propGenre}`}>
+                                            {post.metadata.genre}
+                                        </BreadcrumbLink>
+                                    </BreadcrumbItem>
+                                    <BreadcrumbSeparator />
+                                    <BreadcrumbItem>
+                                        <BreadcrumbPage>{post.metadata.title}</BreadcrumbPage>
+                                    </BreadcrumbItem>
+                                </BreadcrumbList>
+                            </Breadcrumb>
+                        </section>
+                        <BlogPostHeaderSection metadata={post.metadata} />
+                        <article
+                            className='border-border relative flex flex-row justify-center gap-12 border-x px-4'
+                            aria-labelledby='article-title'>
+                            <main
+                                className={cn(
+                                    'text-foreground grid max-w-3xl grid-cols-1 px-8 text-lg',
+                                    AsideTagClassInjector,
+                                    TaskListClassInjector
+                                )}>
+                                <CustomMDX source={post.content} />
+                            </main>
+                            <BlogArticleAside headers={post.headers} />
+                        </article>
+                    </div>
 
-                <JsonldScript
-                    jsonld={{
-                        '@context': 'http://schema.org',
-                        '@type': 'BlogPosting',
-                        image: new URL(
-                            post.metadata.image
-                                ? post.metadata.image
-                                : `/og?tag=&title=${encodeURIComponent(post.metadata.title)}&desc=${encodeURIComponent(post.metadata.summary)}&ni=t&tr=t`,
-                            BASE_URL
-                        ).toString(),
-                        url: new URL(post.href, BASE_URL).toString(),
-                        headline: post.metadata.title,
-                        description: post.metadata.summary,
-                        dateCreated: post.metadata.createdAt,
-                        datePublished: post.metadata.publishedAt,
-                        dateModified: post.metadata.updatedAt,
-                        inLanguage: 'zh-TW',
-                        isFamilyFriendly: true,
-                        copyrightYear: `${new Date().getFullYear()}`,
-                        copyrightHolder: NAME,
-                        contentLocation: {
-                            '@type': 'Place',
-                            name: 'Taipei City, Taiwan'
-                        },
-                        accountablePerson: JSON_LD_MYSELF,
-                        author: JSON_LD_MYSELF,
-                        creator: JSON_LD_MYSELF,
-                        publisher: JSON_LD_MYSELF,
-                        mainEntityOfPage: {
-                            '@type': 'WebPage',
-                            '@id': new URL(post.href, BASE_URL).toString()
-                        },
-                        keywords: post.metadata.keywords.split(',').map((keyword) => keyword.trim()),
-                        genre: [post.metadata.genre],
-                        articleSection: post.headers
-                            .filter((header) => header.level === 1)
-                            .map((header) => header.content),
-                        articleBody: post.content
-                    }}
-                />
-            </section>
-        </SectionPadding>
+                    <JsonldScript
+                        jsonld={{
+                            '@context': 'http://schema.org',
+                            '@type': 'BlogPosting',
+                            image: new URL(
+                                post.metadata.image
+                                    ? post.metadata.image
+                                    : `/og?tag=&title=${encodeURIComponent(post.metadata.title)}&desc=${encodeURIComponent(post.metadata.summary)}&ni=t&tr=t`,
+                                BASE_URL
+                            ).toString(),
+                            url: new URL(post.href, BASE_URL).toString(),
+                            headline: post.metadata.title,
+                            description: post.metadata.summary,
+                            dateCreated: post.metadata.createdAt,
+                            datePublished: post.metadata.publishedAt,
+                            dateModified: post.metadata.updatedAt,
+                            inLanguage: 'zh-TW',
+                            isFamilyFriendly: true,
+                            copyrightYear: `${new Date().getFullYear()}`,
+                            copyrightHolder: NAME,
+                            contentLocation: {
+                                '@type': 'Place',
+                                name: 'Taipei City, Taiwan'
+                            },
+                            accountablePerson: JSON_LD_MYSELF,
+                            author: JSON_LD_MYSELF,
+                            creator: JSON_LD_MYSELF,
+                            publisher: JSON_LD_MYSELF,
+                            mainEntityOfPage: {
+                                '@type': 'WebPage',
+                                '@id': new URL(post.href, BASE_URL).toString()
+                            },
+                            keywords: post.metadata.keywords.split(',').map((keyword) => keyword.trim()),
+                            genre: [post.metadata.genre],
+                            articleSection: post.headers
+                                .filter((header) => header.level === 1)
+                                .map((header) => header.content),
+                            articleBody: post.content
+                        }}
+                    />
+                </section>
+            </SectionPadding>
+            <BlogSection
+                headerContent={{
+                    subTitle: 'More Posts',
+                    title: '更多好文',
+                    desc: '每日一篇 每日補充 每日茁壯'
+                }}
+            />
+        </>
         // <section>
         //     <h1 className='title text-2xl font-semibold tracking-tighter'>{post.metadata.title}</h1>
         //     <div className='mb-8 mt-2 flex items-center justify-between text-sm'>
