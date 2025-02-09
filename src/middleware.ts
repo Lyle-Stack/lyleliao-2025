@@ -8,7 +8,7 @@ const isProduction = process.env.NODE_ENV === 'production';
  * ? https://nextjs.org/docs/app/building-your-application/routing/middleware#cors
  */
 const allowedOrigins = [
-    isProduction ? 'https://lyleliao.com' : 'http://localhost:3000',
+    isProduction ? 'https://lyleliao.com' : 'localhost:3000',
     'https://fonts.gstatic.com',
     'https://fonts.googleapis.com'
 ];
@@ -56,7 +56,7 @@ export function middleware(request: NextRequest) {
      * */
     const cspHeader = `
     default-src 'self';
-    script-src 'self' https: http: ${allowedOrigins.join(' ')} ${isProduction ? `'unsafe-inline'` : `'unsafe-eval'`};
+    script-src 'self' https: http: ${allowedOrigins.join(' ')} ${isProduction ? `'unsafe-inline'` : `'unsafe-inline' 'unsafe-eval'`};
     style-src 'self' ${allowedOrigins.join(' ')} 'unsafe-inline';
     img-src 'self' blob: data: https://s3.ap-southeast-2.amazonaws.com ${allowedOrigins.join(' ')};
     font-src 'self' ${allowedOrigins.join(' ')};

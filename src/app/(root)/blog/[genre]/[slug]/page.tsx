@@ -7,6 +7,14 @@ import BlogPostHeaderSection from '@/components/blog/BlogPostHeaderSection';
 import { AsideTagClassInjector, CustomMDX, TaskListClassInjector } from '@/components/blog/mdx';
 import JsonldScript from '@/components/share/JsonldScript';
 import SectionPadding from '@/components/share/SectionPadding';
+import {
+    Breadcrumb,
+    BreadcrumbItem,
+    BreadcrumbLink,
+    BreadcrumbList,
+    BreadcrumbPage,
+    BreadcrumbSeparator
+} from '@/components/ui/breadcrumb';
 import { JSON_LD_MYSELF, NAME } from '@/constant/jsonld-and-meta';
 import { cn } from '@/lib/utils';
 
@@ -79,6 +87,23 @@ export default async function Blog({ params }: Props) {
         <SectionPadding>
             <section>
                 <div className='blog mx-auto px-3'>
+                    <section className='bg-background w-full pt-4'>
+                        <Breadcrumb>
+                            <BreadcrumbList>
+                                <BreadcrumbItem>
+                                    <BreadcrumbLink href='/blog'>Blog</BreadcrumbLink>
+                                </BreadcrumbItem>
+                                <BreadcrumbSeparator />
+                                <BreadcrumbItem>
+                                    <BreadcrumbLink href={`/blog/${propGenre}`}>{post.metadata.genre}</BreadcrumbLink>
+                                </BreadcrumbItem>
+                                <BreadcrumbSeparator />
+                                <BreadcrumbItem>
+                                    <BreadcrumbPage>{post.metadata.title}</BreadcrumbPage>
+                                </BreadcrumbItem>
+                            </BreadcrumbList>
+                        </Breadcrumb>
+                    </section>
                     <BlogPostHeaderSection metadata={post.metadata} />
                     <article
                         className='border-border relative flex flex-row justify-center gap-12 border-x px-4'
