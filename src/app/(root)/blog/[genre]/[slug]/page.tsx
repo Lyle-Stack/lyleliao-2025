@@ -86,7 +86,7 @@ export default async function Blog({ params }: Props) {
     return (
         <SectionPadding>
             <section>
-                <div className='blog mx-auto px-3'>
+                <div className='mx-auto px-3'>
                     <section className='bg-background w-full pt-4'>
                         <Breadcrumb>
                             <BreadcrumbList>
